@@ -1,5 +1,6 @@
 import { Flex } from "@/Styles/Layout";
-import { tokens } from "@fluentui/react-components";
+import { Link, Text, tokens } from "@fluentui/react-components";
+import { useRouter } from "next/router";
 
 export const NavH = 54;
 export const NavW = "1440px";
@@ -12,6 +13,7 @@ export const NavW = "1440px";
  * @version 0.1.0
  */
 export function TopNavBar() {
+  const route = useRouter();
 
   return (
     <header style={{
@@ -33,9 +35,26 @@ export function TopNavBar() {
         alignItems: "center",
         justifyContent: "space-between"
       }}>
+        <menu style={{
+          marginBlock: 0,
+          paddingInline: 0,
+          ...Flex,
+          columnGap: tokens.spacingHorizontalXXL
+        }}>
+          <Text>Aloento</Text>
+          <Link href="/" appearance="subtle">Home</Link>
+          <Link href="/" appearance="subtle">Archives</Link>
+          <Link href="/" appearance="subtle">Categories</Link>
+          <Link href="/" appearance="subtle">Tags</Link>
+        </menu>
 
+        <menu style={{
+          marginBlock: 0,
+          paddingInline: 0
+        }}>
+
+        </menu>
       </nav>
-
     </header>
   )
 }

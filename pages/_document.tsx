@@ -11,6 +11,8 @@ export default function Document() {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#40526c" />
         <meta name="msapplication-TileColor" content="#40526c" />
         <meta name="theme-color" content="#40526c" />
+
+        <title>Aloento's Blog</title>
       </Head>
 
       <body style={{ margin: 0 }}>
