@@ -101,14 +101,24 @@ const updatePackageJson = ({ APP_NAME, isTypeScript, packageJson }) => {
   const {
     devDependencies,
     prisma: { seed: prismaSeed, ...prisma },
-    scripts: { typecheck, validate, ...scripts },
+    scripts: {
+      "format:repo": _repoFormatScript,
+      "lint:repo": _repoLintScript,
+      typecheck,
+      validate,
+      ...scripts
+    },
   } = packageJson.content;
 
   packageJson.update({
     name: APP_NAME,
-    devDependencies: isTypeScript
-      ? devDependencies
-      : removeUnusedDependencies(devDependencies, ["ts-node"]),
+    devDependencies: removeUnusedDependencies(
+      devDependencies,
+      // packages that are only used for linting the repo
+      ["eslint-plugin-markdown", "eslint-plugin-prefer-let"].concat(
+        isTypeScript ? [] : ["ts-node"]
+      )
+    ),
     prisma: isTypeScript
       ? { ...prisma, seed: prismaSeed }
       : {
@@ -235,8 +245,13 @@ const main = async ({ isTypeScript, packageManager, rootDirectory }) => {
     fs.rm(path.join(rootDirectory, ".github", "ISSUE_TEMPLATE"), {
       recursive: true,
     }),
+    fs.rm(path.join(rootDirectory, ".github", "workflows", "format-repo.yml")),
+    fs.rm(path.join(rootDirectory, ".github", "workflows", "lint-repo.yml")),
+    fs.rm(path.join(rootDirectory, ".github", "workflows", "no-response.yml")),
     fs.rm(path.join(rootDirectory, ".github", "dependabot.yml")),
     fs.rm(path.join(rootDirectory, ".github", "PULL_REQUEST_TEMPLATE.md")),
+    fs.rm(path.join(rootDirectory, ".eslintrc.repo.js")),
+    fs.rm(path.join(rootDirectory, "LICENSE.md")),
   ];
 
   if (!isTypeScript) {
