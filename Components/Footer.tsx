@@ -1,3 +1,6 @@
+import { Flex } from "@/Styles/Layout";
+import { NavW } from "./TopNavBar";
+
 /**
  * Global Footer
  *
@@ -13,7 +16,17 @@ export function Footer() {
       padding: "27px 0",
       backgroundColor: "white"
     }}>
-
+      <div style={{
+        ...Flex,
+        maxWidth: NavW,
+        margin: "0 auto"
+      }}>
+        <img src="/safari-pinned-tab.svg" style={{
+          width: "150px",
+          filter: "invert(1)",
+          backgroundColor: "silver"
+        }} />
+      </div>
     </footer>
   )
 }
