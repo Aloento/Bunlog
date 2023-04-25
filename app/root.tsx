@@ -1,5 +1,6 @@
+import { FluentProvider, RendererProvider, SSRProvider, createDOMRenderer, renderToStyleElements, webLightTheme } from "@fluentui/react-components";
 import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction, LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
   Links,
@@ -11,32 +12,40 @@ import {
 } from "@remix-run/react";
 
 import { getUser } from "~/session.server";
-import tailwindStylesheetUrl from "~/styles/tailwind.css";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: tailwindStylesheetUrl },
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
+export function links() {
+  return cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : [];
+}
 
-export const loader = async ({ request }: LoaderArgs) => {
+export async function loader({ request }: LoaderArgs) {
   return json({ user: await getUser(request) });
-};
+}
 
 export default function App() {
+  const renderer = createDOMRenderer();
+
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <head>
+        {renderToStyleElements(renderer)}
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
+
+      <RendererProvider renderer={renderer}>
+        <SSRProvider>
+          <FluentProvider theme={webLightTheme}>
+
+            <Outlet />
+            <ScrollRestoration />
+            <Scripts />
+            <LiveReload />
+
+          </FluentProvider>
+        </SSRProvider>
+      </RendererProvider>
     </html>
   );
 }
