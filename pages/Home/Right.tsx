@@ -1,3 +1,4 @@
+import { Card } from "@fluentui/react-components";
 import { LRColStyle } from "./Style";
 
 /**
@@ -10,7 +11,7 @@ import { LRColStyle } from "./Style";
 export function HomeRight() {
   return (
     <div style={LRColStyle}>
-
+      <Card />
     </div>
   )
 }

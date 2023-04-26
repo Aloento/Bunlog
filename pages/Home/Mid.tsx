@@ -1,4 +1,6 @@
-import { LRColStyle } from "./Style";
+import { ColFlex } from "@/Styles/Layout";
+import { tokens } from "@fluentui/react-components";
+import { PostCard } from "./PostCard";
 
 /**
  * 
@@ -10,10 +12,11 @@ import { LRColStyle } from "./Style";
 export function HomeMid() {
   return (
     <div style={{
-      ...LRColStyle,
-      flexBasis: "50%",
+      ...ColFlex,
+      rowGap: tokens.spacingVerticalXL,
+      flexGrow: 1
     }}>
-
+      <PostCard />
     </div>
   )
 }
