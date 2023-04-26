@@ -1,4 +1,3 @@
-import { PersonCard } from "@/Components/PersonCard";
 import { LRColStyle } from "./Style";
 
 /**
@@ -8,10 +7,10 @@ import { LRColStyle } from "./Style";
  * @since 0.1.0
  * @version 0.1.0
  */
-export function HomeLeft() {
+export function HomeRight() {
   return (
     <div style={LRColStyle}>
-      <PersonCard />
+
     </div>
   )
 }

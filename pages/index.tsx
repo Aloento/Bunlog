@@ -1,5 +1,8 @@
 import { Flex } from "@/Styles/Layout";
 import { tokens } from "@fluentui/react-components";
+import { HomeLeft } from "./Home/Left";
+import { HomeMid } from "./Home/Mid";
+import { HomeRight } from "./Home/Right";
 
 /**
  * 
@@ -14,7 +17,9 @@ export default function HomePage() {
       ...Flex,
       columnGap: tokens.spacingHorizontalXL
     }}>
-
+      <HomeLeft />
+      <HomeMid />
+      <HomeRight />
     </div>
   )
 }

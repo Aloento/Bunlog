@@ -2,17 +2,16 @@ import { Flex } from "@/Styles/Layout";
 import { Link, Text, tokens } from "@fluentui/react-components";
 import { Code20Regular } from "@fluentui/react-icons";
 import { useRouter } from "next/router";
+import { CSSProperties } from "react";
 
 export const NavH = 54;
 export const NavW = "1440px";
 
-const style = {
-  menu: {
-    marginBlock: 0,
-    paddingInline: 0,
-    ...Flex,
-    columnGap: tokens.spacingHorizontalXXL
-  }
+const menu: CSSProperties = {
+  marginBlock: 0,
+  paddingInline: 0,
+  ...Flex,
+  columnGap: tokens.spacingHorizontalXXL
 }
 
 /**
@@ -45,7 +44,7 @@ export function TopNavBar() {
         alignItems: "center",
         justifyContent: "space-between"
       }}>
-        <menu style={style.menu}>
+        <menu style={menu}>
           <Text>Aloento</Text>
           <Link href="/" appearance="subtle">Home</Link>
           <Link href="/Archives" appearance="subtle">Archives</Link>
@@ -53,7 +52,7 @@ export function TopNavBar() {
           <Link href="/Tags" appearance="subtle">Tags</Link>
         </menu>
 
-        <menu style={style.menu}>
+        <menu style={menu}>
           <Link href="/Account" appearance="subtle">Account</Link>
 
           <Link appearance="subtle" href="https://github.com/Aloento/Bunlog" target="_blank">
