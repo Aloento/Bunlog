@@ -6,9 +6,9 @@ export const Flex: CSSProperties = { display: "flex" };
 export const Col: CSSProperties = { flexDirection: "column" };
 export const ColFlex: CSSProperties = { ...Flex, ...Col };
 
-export const BaseCard: CSSProperties = {
-  ...Flex,
-  backgroundColor: tokens.colorNeutralBackground1,
-  boxShadow: tokens.shadow4,
-  borderRadius: tokens.borderRadiusMedium,
-};
+export const LRColStyle: CSSProperties = {
+  ...ColFlex,
+  flexBasis: "25%",
+  flexShrink: 0,
+  rowGap: tokens.spacingVerticalXL
+}

@@ -1,8 +1,6 @@
-import { Flex } from "@/Styles/Layout";
+import { ColFlex } from "@/Styles/Layout";
 import { tokens } from "@fluentui/react-components";
-import { HomeLeft } from "./Home/Left";
-import { HomeMid } from "./Home/Mid";
-import { HomeRight } from "./Home/Right";
+import { PostCard } from "./Home/PostCard";
 
 /**
  * 
@@ -14,12 +12,11 @@ import { HomeRight } from "./Home/Right";
 export default function HomePage() {
   return (
     <div style={{
-      ...Flex,
-      columnGap: tokens.spacingHorizontalXL
+      ...ColFlex,
+      rowGap: tokens.spacingVerticalXL,
+      flexGrow: 1
     }}>
-      <HomeLeft />
-      <HomeMid />
-      <HomeRight />
+      <PostCard />
     </div>
   )
 }

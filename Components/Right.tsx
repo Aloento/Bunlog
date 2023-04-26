@@ -1,5 +1,5 @@
+import { LRColStyle } from "@/Styles/Layout";
 import { Card } from "@fluentui/react-components";
-import { LRColStyle } from "./Style";
 
 /**
  * 
@@ -8,7 +8,7 @@ import { LRColStyle } from "./Style";
  * @since 0.1.0
  * @version 0.1.0
  */
-export function HomeRight() {
+export function CommRight() {
   return (
     <div style={LRColStyle}>
       <Card />

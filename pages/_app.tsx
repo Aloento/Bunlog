@@ -1,11 +1,13 @@
 import { Footer } from "@/Components/Footer";
 import { NavH, NavW, TopNavBar } from "@/Components/TopNavBar";
 import { Calc, Unit } from "@/Styles";
-import { ColFlex } from "@/Styles/Layout";
+import { ColFlex, Flex } from "@/Styles/Layout";
 import { FluentProvider, tokens, webLightTheme } from "@fluentui/react-components";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import type { AppProps } from "next/app";
+import { CommLeft } from "../Components/Left";
+import { CommRight } from "../Components/Right";
 
 dayjs.extend(relativeTime)
 
@@ -39,7 +41,14 @@ export default function App({ Component, pageProps }: AppProps) {
           paddingLeft: tokens.spacingHorizontalS,
           paddingRight: tokens.spacingHorizontalS,
         }}>
-          <Component {...pageProps} />
+          <div style={{
+            ...Flex,
+            columnGap: tokens.spacingHorizontalXL
+          }}>
+            <CommLeft />
+            <Component {...pageProps} />
+            <CommRight />
+          </div>
         </main>
 
         <Footer />
