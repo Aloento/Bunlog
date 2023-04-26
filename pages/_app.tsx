@@ -1,5 +1,6 @@
 import { Footer } from "@/Components/Footer";
 import { NavH, NavW, TopNavBar } from "@/Components/TopNavBar";
+import { Calc, Unit } from "@/Styles";
 import { ColFlex } from "@/Styles/Layout";
 import { FluentProvider, tokens, webLightTheme } from "@fluentui/react-components";
 import type { AppProps } from "next/app";
@@ -20,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
         ...ColFlex,
         minWidth: "1024px",
         position: "absolute",
-        marginTop: `${NavH}px`,
+        paddingTop: Calc(Unit(NavH), "+", tokens.spacingVerticalXXXL),
         width: "100%",
         height: "-webkit-fill-available",
         justifyContent: "space-between",

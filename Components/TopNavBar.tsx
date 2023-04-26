@@ -1,9 +1,19 @@
 import { Flex } from "@/Styles/Layout";
 import { Link, Text, tokens } from "@fluentui/react-components";
+import { Code20Regular } from "@fluentui/react-icons";
 import { useRouter } from "next/router";
 
 export const NavH = 54;
 export const NavW = "1440px";
+
+const style = {
+  menu: {
+    marginBlock: 0,
+    paddingInline: 0,
+    ...Flex,
+    columnGap: tokens.spacingHorizontalXXL
+  }
+}
 
 /**
  * Global top navigation bar
@@ -35,24 +45,18 @@ export function TopNavBar() {
         alignItems: "center",
         justifyContent: "space-between"
       }}>
-        <menu style={{
-          marginBlock: 0,
-          paddingInline: 0,
-          ...Flex,
-          columnGap: tokens.spacingHorizontalXXL
-        }}>
+        <menu style={style.menu}>
           <Text>Aloento</Text>
           <Link href="/" appearance="subtle">Home</Link>
-          <Link href="/" appearance="subtle">Archives</Link>
-          <Link href="/" appearance="subtle">Categories</Link>
-          <Link href="/" appearance="subtle">Tags</Link>
+          <Link href="/Archives" appearance="subtle">Archives</Link>
+          <Link href="/Categories" appearance="subtle">Categories</Link>
+          <Link href="/Tags" appearance="subtle">Tags</Link>
         </menu>
 
-        <menu style={{
-          marginBlock: 0,
-          paddingInline: 0
-        }}>
-
+        <menu style={style.menu}>
+          <Link appearance="subtle" href="https://github.com/Aloento/Bunlog" target="_blank">
+            <Code20Regular />
+          </Link>
         </menu>
       </nav>
     </header>
