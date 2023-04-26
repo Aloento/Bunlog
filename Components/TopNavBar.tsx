@@ -54,6 +54,8 @@ export function TopNavBar() {
         </menu>
 
         <menu style={style.menu}>
+          <Link href="/Account" appearance="subtle">Account</Link>
+
           <Link appearance="subtle" href="https://github.com/Aloento/Bunlog" target="_blank">
             <Code20Regular />
           </Link>

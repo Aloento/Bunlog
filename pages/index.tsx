@@ -1,7 +1,20 @@
-import { Button } from "@fluentui/react-components";
+import { Flex } from "@/Styles/Layout";
+import { tokens } from "@fluentui/react-components";
 
-export default function Home() {
+/**
+ * 
+ *
+ * @author Aloento
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+export default function HomePage() {
   return (
-    <Button>HomePage</Button>
+    <div style={{
+      ...Flex,
+      columnGap: tokens.spacingHorizontalXL
+    }}>
+
+    </div>
   )
 }
