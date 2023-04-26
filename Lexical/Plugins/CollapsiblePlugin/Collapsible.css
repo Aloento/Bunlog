@@ -1,0 +1,48 @@
+.LexEditor_Collapsible {
+  background: #fcfcfc;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.LexEditor_CollapsibleTitle {
+  cursor: pointer;
+  padding: 5px 5px 5px 20px;
+  position: relative;
+  font-weight: bold;
+  list-style: none;
+  outline: none;
+}
+
+.LexEditor_CollapsibleTitle::marker,
+.LexEditor_CollapsibleTitle::-webkit-details-marker {
+  display: none;
+}
+
+.LexEditor_CollapsibleTitle:before {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 4px 6px 4px 6px;
+  border-left-color: #000;
+  display: block;
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.LexEditor_Collapsible[open] .LexEditor_CollapsibleTitle:before {
+  border-color: transparent;
+  border-width: 6px 4px 0 4px;
+  border-top-color: #000;
+}
+
+.LexEditor_CollapsibleContent {
+  padding: 0 5px 5px 20px;
+}
+
+.LexEditor_CollapsibleCollapsed .LexEditor_CollapsibleContent {
+  display: none;
+  user-select: none;
+}
