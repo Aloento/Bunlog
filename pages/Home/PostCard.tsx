@@ -18,7 +18,7 @@ export function PostCard() {
       <CardHeader
         style={{ rowGap: tokens.spacingVerticalS }}
         header={
-          <Link appearance="subtle" href="/">
+          <Link appearance="subtle" href="/Article">
             <Title3>Video processing with WebCodecs</Title3>
           </Link>
         }

@@ -1,3 +1,5 @@
+import { MidStyle } from "@/Styles/Layout";
+
 /**
  * 
  *
@@ -7,7 +9,7 @@
  */
 export default function ArtiPage() {
   return (
-    <div>
+    <div style={MidStyle}>
       Not Implement
     </div>
   )

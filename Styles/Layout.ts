@@ -12,3 +12,9 @@ export const LRColStyle: CSSProperties = {
   flexShrink: 0,
   rowGap: tokens.spacingVerticalXL
 }
+
+export const MidStyle: CSSProperties = {
+  ...ColFlex,
+  rowGap: tokens.spacingVerticalXL,
+  flexGrow: 1
+}

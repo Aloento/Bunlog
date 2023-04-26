@@ -1,5 +1,4 @@
-import { ColFlex } from "@/Styles/Layout";
-import { tokens } from "@fluentui/react-components";
+import { MidStyle } from "@/Styles/Layout";
 import { PostCard } from "./Home/PostCard";
 
 /**
@@ -11,11 +10,7 @@ import { PostCard } from "./Home/PostCard";
  */
 export default function HomePage() {
   return (
-    <div style={{
-      ...ColFlex,
-      rowGap: tokens.spacingVerticalXL,
-      flexGrow: 1
-    }}>
+    <div style={MidStyle}>
       <PostCard />
     </div>
   )
