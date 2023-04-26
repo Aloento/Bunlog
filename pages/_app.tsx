@@ -32,6 +32,8 @@ export default function App({ Component, pageProps }: AppProps) {
           width: "-webkit-fill-available",
           marginLeft: "auto",
           marginRight: "auto",
+          paddingLeft: tokens.spacingHorizontalS,
+          paddingRight: tokens.spacingHorizontalS,
         }}>
           <Component {...pageProps} />
         </main>

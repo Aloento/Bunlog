@@ -1,4 +1,4 @@
-import { ColFlex } from "@/Styles/Layout";
+import { LRColStyle } from "./Style";
 
 /**
  * 
@@ -10,7 +10,8 @@ import { ColFlex } from "@/Styles/Layout";
 export function HomeMid() {
   return (
     <div style={{
-      ...ColFlex,
+      ...LRColStyle,
+      flexBasis: "50%",
     }}>
 
     </div>
