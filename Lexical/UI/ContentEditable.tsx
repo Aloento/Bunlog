@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from "@fluentui/react-components";
+import { makeStyles, mergeClasses, shorthands, tokens } from "@fluentui/react-components";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { useLexical } from "../Context/Setting";
 
@@ -37,6 +37,7 @@ const useStyle = makeStyles({
 export function LexContentEditable({ className, table }: { className?: string, table?: true }): JSX.Element {
   const style = useStyle();
   const { Display } = useLexical();
+
   return <ContentEditable className={mergeClasses(
     "LexEditor_Content",
     className || table ? style.table : style.root,

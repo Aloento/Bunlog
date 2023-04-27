@@ -18,7 +18,6 @@ import {
   useRef,
   useState
 } from "react";
-import icon from "../../Images/draggable-block-menu.svg";
 import { isHTMLElement } from "../../Utils/guard";
 import { Point } from "../../Utils/point";
 import { Rect } from "../../Utils/rect";
@@ -310,7 +309,7 @@ function DraggableBlockMenu({ editor, anchor }: { editor: LexicalEditor; anchor:
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
       >
-        <div className={editor._editable ? style.icon : ""} />
+        <div className={editor._editable ? mergeClasses(style.icon, "LexEditor_DraggableIcon") : ""} />
       </div>
       <div className={style.line} ref={targetLineRef} />
     </Portal>
@@ -338,7 +337,6 @@ const useStyle = makeStyles({
     width: "16px",
     height: "16px",
     opacity: 0.3,
-    backgroundImage: `url(${icon})`
   },
   line: {
     pointerEvents: "none",

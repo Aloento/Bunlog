@@ -221,6 +221,10 @@ span.LexEditor_Image {
   background-position: center;
 }
 
+.LexEditor_DraggableIcon {
+  background-image: url(../Lexical/Images/draggable-block-menu.svg);
+}
+
 @keyframes tableControls {
   0% {
     opacity: 0;

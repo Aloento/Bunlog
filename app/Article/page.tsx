@@ -5,6 +5,7 @@ import { Lexical } from "@/Lexical";
 import { LexDisplayPreset } from "@/Lexical/Context/Display";
 import { ExampleRichText } from "@/Lexical/Example";
 import { BaseCard } from "@/Styles/Layout";
+import { tokens } from "@fluentui/react-components";
 
 /**
  * 
@@ -15,8 +16,11 @@ import { BaseCard } from "@/Styles/Layout";
  */
 export default function ArtiPage() {
   return (
-    <ColLayout style={BaseCard as any}>
-      <Lexical Plugin={LexDisplayPreset} Editable={false} State={ExampleRichText} />
+    <ColLayout style={{
+      ...BaseCard as any,
+      padding: [tokens.spacingVerticalMNudge, tokens.spacingHorizontalXL].join(" "),
+    }}>
+      <Lexical Plugin={LexDisplayPreset} Display Editable={false} State={ExampleRichText} />
     </ColLayout>
   )
 }
