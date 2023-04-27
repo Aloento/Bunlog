@@ -1,8 +1,6 @@
 "use client";
 
-import { ColLayout } from "@/Components/ColLayout";
 import { Lexical } from "@/Lexical";
-import { LexDisplayPreset } from "@/Lexical/Context/Display";
 import { ExampleRichText } from "@/Lexical/Example";
 import { BaseCard } from "@/Styles/Layout";
 
@@ -15,8 +13,8 @@ import { BaseCard } from "@/Styles/Layout";
  */
 export default function ArtiPage() {
   return (
-    <ColLayout style={BaseCard as any}>
-      <Lexical Plugin={LexDisplayPreset} Editable={false} State={ExampleRichText} />
-    </ColLayout>
+    <div style={BaseCard as any}>
+      <Lexical State={ExampleRichText} />
+    </div>
   )
 }
