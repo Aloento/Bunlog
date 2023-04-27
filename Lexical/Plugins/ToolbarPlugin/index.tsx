@@ -50,7 +50,7 @@ import { INSERT_COLLAPSIBLE_COMMAND } from "../CollapsiblePlugin";
 import { InsertImageDialog } from "../ImagesPlugin";
 import { InsertTableDialog } from "../TablePlugin";
 import { BlockFormat, BlockTypeToBlockName } from "./BlockFormat";
-import { LexColorPicker } from "./ColorPicker";
+import { LexColorPicker } from "./ColorPopover";
 import { FontDropDown } from "./Font";
 import "./index.css";
 
