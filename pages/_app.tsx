@@ -5,6 +5,7 @@ import { ColFlex, Flex } from "@/Styles/Layout";
 import { FluentProvider, tokens, webLightTheme } from "@fluentui/react-components";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import "./index.css";
 import type { AppProps } from "next/app";
 import { CommLeft } from "../Components/Left";
 import { CommRight } from "../Components/Right";

@@ -1,7 +1,6 @@
 import { Button, makeStyles, mergeClasses, shorthands } from "@fluentui/react-components";
 import type { LexicalEditor } from "lexical";
 import { useRef } from "react";
-import { FitButton } from "~/Styles";
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
@@ -309,7 +308,9 @@ export function ImageResizer({
 
 const useStyle = makeStyles({
   button: {
-    ...FitButton,
+    minWidth: "unset",
+    fontWeight: "unset",
+    width: "fit-content",
     position: "absolute",
     bottom: "20px",
     marginLeft: 'auto',

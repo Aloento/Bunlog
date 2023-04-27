@@ -52,7 +52,6 @@ import { InsertTableDialog } from "../TablePlugin";
 import { BlockFormat, BlockTypeToBlockName } from "./BlockFormat";
 import { LexColorPicker } from "./ColorPopover";
 import { FontDropDown } from "./Font";
-import "./index.css";
 
 const useStyle = makeStyles({
   box: {

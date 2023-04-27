@@ -11,7 +11,6 @@ import {
   Spread
 } from "lexical";
 import { lazy, Suspense } from "react";
-import "./index.css";
 
 export interface ImagePayload {
   altText: string;

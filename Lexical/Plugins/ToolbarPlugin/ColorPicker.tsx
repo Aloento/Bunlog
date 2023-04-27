@@ -1,6 +1,5 @@
 import { Field, Input } from '@fluentui/react-components';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import './ColorPicker.css';
 
 interface IColorPicker {
   color: string;

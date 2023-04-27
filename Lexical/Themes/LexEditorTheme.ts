@@ -1,6 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from "@fluentui/react-components";
 import type { EditorThemeClasses } from "lexical";
-import "./LexEditorTheme.css";
 
 const useStyle = makeStyles({
   ltr: { textAlign: "left" },

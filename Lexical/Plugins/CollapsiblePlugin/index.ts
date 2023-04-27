@@ -17,7 +17,6 @@ import {
   createCommand
 } from "lexical";
 import { useEffect } from "react";
-import "./Collapsible.css";
 import { $createCollapsibleContainerNode, $isCollapsibleContainerNode, CollapsibleContainerNode } from "./ContainerNode";
 import { $createCollapsibleContentNode, $isCollapsibleContentNode, CollapsibleContentNode } from "./ContentNode";
 import { $createCollapsibleTitleNode, $isCollapsibleTitleNode, CollapsibleTitleNode } from "./TitleNode";
