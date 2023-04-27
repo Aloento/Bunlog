@@ -1,9 +1,9 @@
-import { Button, makeStyles, mergeClasses, shorthands } from "@fluentui/react-components";
+import { Button, Menu, MenuPopover, MenuTrigger, makeStyles, mergeClasses, shorthands } from "@fluentui/react-components";
 import { ChevronDownRegular } from "@fluentui/react-icons";
 import { $generateHtmlFromNodes } from "@lexical/html";
 import { LexicalNestedComposer } from "@lexical/react/LexicalNestedComposer";
 import { $getRoot, EditorThemeClasses, LexicalEditor } from "lexical";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ICell, IRow, TableNode, cellHTMLCache, cellTextContentCache } from ".";
 import { CellContext } from "../../Plugins/TablePlugin";
 import { SortOptions } from "./Component";
@@ -65,12 +65,10 @@ export function TableCell({
   cell, cellCoordMap, cellEditor, isEditing, isSelected, isPrimarySelected, theme, updateCellsByID, updateTableNode, rows, setSortingOptions, sortingOptions,
 }: ITableCell) {
   const [showMenu, setShowMenu] = useState(false);
-  const menuRootRef = useRef<HTMLDivElement>(null);
   const isHeader = cell.type !== "normal";
   const editorStateJSON = cell.json;
   const CellComponent = isHeader ? "th" : "td";
   const cellWidth = cell.width;
-  const menuElem = menuRootRef.current;
   const coords = cellCoordMap.get(cell.id);
   const isSorted = sortingOptions && coords &&
     coords[0] === sortingOptions.x && coords[1] === 0;
@@ -106,30 +104,35 @@ export function TableCell({
         </>}
 
       {isPrimarySelected && !isEditing && (
-        <div className={theme.tableCellActionButtonContainer} ref={menuRootRef}>
-          <Button
-            size="small"
-            shape="circular"
-            className={style.btn}
-            children={<ChevronDownRegular />}
-            onClick={(e) => {
-              setShowMenu(!showMenu);
-              e.stopPropagation();
-            }} />
+        <div className={theme.tableCellActionButtonContainer}>
+          <Menu open={showMenu}>
+            <MenuTrigger disableButtonEnhancement>
+              <Button
+                size="small"
+                shape="circular"
+                className={style.btn}
+                children={<ChevronDownRegular />}
+                onClick={(e) => {
+                  setShowMenu(!showMenu);
+                  e.stopPropagation();
+                }} />
+            </MenuTrigger>
+
+            <MenuPopover>
+              <TableActionMenu
+                cell={cell}
+                updateCellsByID={updateCellsByID}
+                onClose={() => setShowMenu(false)}
+                updateTableNode={updateTableNode}
+                cellCoordMap={cellCoordMap}
+                rows={rows}
+                setSortingOptions={setSortingOptions}
+                sortingOptions={sortingOptions}
+              />
+            </MenuPopover>
+          </Menu>
         </div>
       )}
-
-      {showMenu && menuElem &&
-        <TableActionMenu
-          cell={cell}
-          menuElem={menuElem}
-          updateCellsByID={updateCellsByID}
-          onClose={() => setShowMenu(false)}
-          updateTableNode={updateTableNode}
-          cellCoordMap={cellCoordMap}
-          rows={rows}
-          setSortingOptions={setSortingOptions}
-          sortingOptions={sortingOptions} />}
 
       {isSorted && <div className={theme.tableCellSortedIndicator} />}
 

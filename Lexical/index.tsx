@@ -1,19 +1,45 @@
-import { lazy, Suspense } from "react";
-import type { ILexical } from "./Context/Setting";
+import { LexicalComposer } from "@lexical/react/LexicalComposer";
+import { LexDisplayPreset } from "./Context/Display";
+import { LexRichTextPreset } from "./Context/RichText";
+import { LexicalContext, type ILexical } from "./Context/Setting";
+import { LexEditor } from "./Editor";
+import { LexicalNodes } from "./Nodes/LexicalNodes";
+import { TableContext } from "./Plugins/TablePlugin";
+import { useLexEditorTheme } from "./Themes/LexEditorTheme";
 
-/**
- * Lexical 文本编辑器
- *
- * @author Aloento
- * @since 0.5.0
- * @version 0.1.0
- */
-export function Lexical(props: ILexical) {
+export function Lexical({
+  Namespace = "Aloento",
+  Plugin = LexRichTextPreset,
+  Editable = true,
+  OnError = (e) => { throw e; },
+  State,
+  Placeholder,
+  Display
+}: ILexical): JSX.Element {
+  Editable = Display ? false : Editable;
+
   return (
-    <Suspense>
-      <Wrapper {...props} />
-    </Suspense>
+    <LexicalComposer initialConfig={{
+      editorState: State,
+      namespace: Namespace,
+      nodes: [...LexicalNodes],
+      onError: OnError,
+      theme: useLexEditorTheme(),
+      editable: Editable,
+    }}>
+      <LexicalContext {...{
+        Namespace,
+        Plugin: Display ? LexDisplayPreset : Plugin,
+        Editable,
+        OnError,
+        State,
+        Placeholder,
+        Display
+      }}>
+        <TableContext>
+          <LexEditor />
+        </TableContext>
+      </LexicalContext>
+    </LexicalComposer>
   );
 }
-
-const Wrapper = lazy(() => import("./Wrapper"));
