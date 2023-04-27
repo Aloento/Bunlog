@@ -1,6 +1,6 @@
 "use client";
 
-import { MidStyle } from "@/Styles/Layout";
+import { ColLayout } from "@/Components/ColLayout";
 import { PostCard } from "./Home/PostCard";
 
 /**
@@ -12,8 +12,8 @@ import { PostCard } from "./Home/PostCard";
  */
 export default function HomePage() {
   return (
-    <div style={MidStyle}>
+    <ColLayout>
       <PostCard />
-    </div>
+    </ColLayout>
   )
 }

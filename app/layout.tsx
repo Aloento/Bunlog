@@ -3,12 +3,10 @@
 import { Footer } from "@/Components/Footer";
 import { NavH, NavW, TopNavBar } from "@/Components/TopNavBar";
 import { Calc, Unit } from "@/Styles";
-import { ColFlex, Flex } from "@/Styles/Layout";
+import { ColFlex } from "@/Styles/Layout";
 import { FluentProvider, tokens, webLightTheme } from "@fluentui/react-components";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { CommLeft } from "../Components/Left";
-import { CommRight } from "../Components/Right";
 import "./index.css";
 
 dayjs.extend(relativeTime)
@@ -34,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>Aloento's Blog</title>
       </head>
 
-      <FluentProvider theme={webLightTheme} applyStylesToPortals>
+      <FluentProvider as={"body" as any} theme={webLightTheme} applyStylesToPortals>
         <TopNavBar />
 
         <div style={{
@@ -55,14 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             paddingLeft: tokens.spacingHorizontalS,
             paddingRight: tokens.spacingHorizontalS,
           }}>
-            <div style={{
-              ...Flex,
-              columnGap: tokens.spacingHorizontalXL
-            }}>
-              <CommLeft />
-              {children}
-              <CommRight />
-            </div>
+            {children}
           </main>
 
           <Footer />

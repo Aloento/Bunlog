@@ -5,6 +5,7 @@ specifiers:
   '@lexical/file': ^0.10.0
   '@lexical/react': ^0.10.0
   '@prisma/client': ^4.13.0
+  '@types/lodash': ^4.14.194
   '@types/node': ^18.16.0
   '@types/react': ^18.2.0
   '@types/react-dom': ^18.2.0
@@ -24,6 +25,7 @@ dependencies:
   '@lexical/file': 0.10.0_lexical@0.10.0
   '@lexical/react': 0.10.0_db36t6n32t7pqfmb6cenu7pg5e
   '@prisma/client': 4.13.0_prisma@4.13.0
+  '@types/lodash': 4.14.194
   '@types/node': 18.16.0
   '@types/react': 18.2.0
   '@types/react-dom': 18.2.0
@@ -1583,6 +1585,10 @@ packages:
 
   /@types/js-cookie/2.2.7:
     resolution: {integrity: sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==}
+    dev: false
+
+  /@types/lodash/4.14.194:
+    resolution: {integrity: sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==}
     dev: false
 
   /@types/node/18.16.0:

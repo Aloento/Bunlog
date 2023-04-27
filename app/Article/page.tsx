@@ -1,5 +1,6 @@
+"use client";
+
 import { Lexical } from "@/Lexical";
-import { MidStyle } from "@/Styles/Layout";
 
 /**
  * 
@@ -10,8 +11,6 @@ import { MidStyle } from "@/Styles/Layout";
  */
 export default function ArtiPage() {
   return (
-    <div style={MidStyle}>
-      <Lexical />
-    </div>
+    <Lexical />
   )
 }

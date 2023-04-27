@@ -1,3 +1,7 @@
+"use client";
+
+import { ColLayout } from "@/Components/ColLayout";
+
 /**
  * 
  *
@@ -7,8 +11,8 @@
  */
 export default function CatePage() {
   return (
-    <div>
+    <ColLayout>
       Not Implement
-    </div>
+    </ColLayout>
   )
 }
