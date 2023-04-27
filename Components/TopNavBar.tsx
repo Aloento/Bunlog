@@ -1,7 +1,6 @@
 import { Flex } from "@/Styles/Layout";
 import { Link, Text, tokens } from "@fluentui/react-components";
 import { Code20Regular } from "@fluentui/react-icons";
-import { useRouter } from "next/router";
 import { CSSProperties } from "react";
 
 export const NavH = 54;
@@ -22,8 +21,6 @@ const menu: CSSProperties = {
  * @version 0.1.0
  */
 export function TopNavBar() {
-  const route = useRouter();
-
   return (
     <header style={{
       position: "fixed",

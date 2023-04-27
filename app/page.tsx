@@ -1,3 +1,5 @@
+"use client";
+
 import { MidStyle } from "@/Styles/Layout";
 import { PostCard } from "./Home/PostCard";
 
