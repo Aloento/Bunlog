@@ -44,7 +44,7 @@ import {
   exportTableCellsToHTML,
   plainTextEditorJSON
 } from ".";
-import { CellContext } from "../../Plugins/TablePlugin/TablePlugin";
+import { CellContext } from "../../Plugins/TablePlugin";
 import { createUID } from "../../Utils/createUID";
 import { IS_APPLE } from "../../Utils/environment";
 import { TableCell } from "./TableCell";
