@@ -1,5 +1,5 @@
+import { Button, DialogActions, DialogBody, DialogContent, DialogTitle, DialogTrigger, Field, Input } from "@fluentui/react-components";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { useBoolean } from "ahooks";
 import {
   $createNodeSelection,
   $createParagraphNode,
@@ -78,25 +78,33 @@ export function TableContext({ children }: { children: JSX.Element }) {
 export function InsertTableDialog({ editor }: { editor: LexicalEditor; }): JSX.Element {
   const [rows, setRows] = useState("5");
   const [columns, setColumns] = useState("5");
-  const [hidden, { setTrue }] = useBoolean();
 
   return (
-    <Dialog
-      hidden={hidden}
-      onDismiss={setTrue}
-      modalProps={{ isBlocking: true }}
-      dialogContentProps={{ title: "Insert Table" }}
-    >
-      <TextField label="Rows" required placeholder={rows} onChange={(_, v) => v && setRows(v)} />
-      <TextField label="Cols" required placeholder={columns} onChange={(_, v) => v && setColumns(v)} />
+    <DialogBody>
+      <DialogTitle>
+        Insert Table
+      </DialogTitle>
 
-      <DialogFooter>
-        <DefaultButton onClick={() => {
-          editor.dispatchCommand(INSERT_NEW_TABLE_COMMAND, { columns, rows });
-          setTrue();
-        }} text="Confirm" />
-      </DialogFooter>
-    </Dialog>
+      <DialogContent>
+        <Field label="Rows" required>
+          <Input placeholder={rows} onChange={(_, v) => v && setRows(v.value)} />
+        </Field>
+
+        <Field label="Cols" required>
+          <Input placeholder={columns} onChange={(_, v) => v && setColumns(v.value)} />
+        </Field>
+      </DialogContent>
+
+      <DialogActions>
+        <DialogTrigger disableButtonEnhancement>
+          <Button onClick={() => {
+            editor.dispatchCommand(INSERT_NEW_TABLE_COMMAND, { columns, rows });
+          }}>
+            Confirm
+          </Button>
+        </DialogTrigger>
+      </DialogActions>
+    </DialogBody>
   );
 }
 

@@ -86,7 +86,6 @@ export function ToolbarPlugin(): JSX.Element {
   const [isLink, setIsLink] = useState(false);
   const [canUndo, setCanUndo] = useState(false);
   const [canRedo, setCanRedo] = useState(false);
-  const [modal, showModal] = useState(<></>);
   const [codeLanguage, setCodeLanguage] = useState<string>("");
   const [isEditable, setIsEditable] = useState(() => editor.isEditable());
   const [checked, setChecked] = useState<string[]>([]);
@@ -254,7 +253,7 @@ export function ToolbarPlugin(): JSX.Element {
 
   const style = useStyle();
 
-  return <>
+  return (
     <Toolbar
       checkedValues={{ opts: checked }}
       className={mergeClasses("LexEditor_Toolbar", style.box)}
@@ -470,12 +469,17 @@ export function ToolbarPlugin(): JSX.Element {
                   </DialogSurface>
                 </Dialog>
 
-                <MenuItem
-                  icon={<TableRegular />}
-                  onClick={() => showModal(<InsertTableDialog editor={activeEditor} />)}
-                >
-                  Table
-                </MenuItem>
+                <Dialog>
+                  <DialogTrigger disableButtonEnhancement>
+                    <MenuItem icon={<TableRegular />}>
+                      Table
+                    </MenuItem>
+                  </DialogTrigger>
+
+                  <DialogSurface>
+                    <InsertTableDialog editor={activeEditor} />
+                  </DialogSurface>
+                </Dialog>
 
                 <MenuItem
                   icon={<TextCollapseRegular />}
@@ -553,7 +557,5 @@ export function ToolbarPlugin(): JSX.Element {
         </MenuPopover>
       </Menu>
     </Toolbar>
-
-    {modal}
-  </>;
+  );
 }

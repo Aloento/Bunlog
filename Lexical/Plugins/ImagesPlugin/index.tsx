@@ -1,4 +1,4 @@
-import { Button, DialogActions, DialogBody, DialogContent, DialogTrigger, Field, Input } from "@fluentui/react-components";
+import { Button, DialogActions, DialogBody, DialogContent, DialogTitle, DialogTrigger, Field, Input } from "@fluentui/react-components";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $wrapNodeInElement, mergeRegister } from "@lexical/utils";
 import {
@@ -38,9 +38,9 @@ export function InsertImageDialog({ editor }: { editor: LexicalEditor }): JSX.El
 
   return (
     <DialogBody>
-      <DialogBody>
+      <DialogTitle>
         Insert Image
-      </DialogBody>
+      </DialogTitle>
 
       <DialogContent>
         <Field label="Source" required>
