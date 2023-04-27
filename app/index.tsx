@@ -1,3 +1,5 @@
+"use client";
+
 import { Footer } from "@/Components/Footer";
 import { NavH, NavW, TopNavBar } from "@/Components/TopNavBar";
 import { Calc, Unit } from "@/Styles";
@@ -5,10 +7,9 @@ import { ColFlex, Flex } from "@/Styles/Layout";
 import { FluentProvider, tokens, webLightTheme } from "@fluentui/react-components";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import "./index.css";
-import type { AppProps } from "next/app";
 import { CommLeft } from "../Components/Left";
 import { CommRight } from "../Components/Right";
+import "./index.css";
 
 dayjs.extend(relativeTime)
 
@@ -19,7 +20,7 @@ dayjs.extend(relativeTime)
  * @since MusiLand 0.2.2
  * @version 0.1.0
  */
-export default function App({ Component, pageProps }: AppProps) {
+export function App({ children }: { children: React.ReactNode }) {
   return (
     <FluentProvider theme={webLightTheme} applyStylesToPortals>
       <TopNavBar />
@@ -47,7 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
             columnGap: tokens.spacingHorizontalXL
           }}>
             <CommLeft />
-            <Component {...pageProps} />
+            {children}
             <CommRight />
           </div>
         </main>
