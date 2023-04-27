@@ -1,3 +1,4 @@
+import { BaseCard } from "@/Styles/Layout";
 import { makeStyles, Portal, shorthands, Toolbar, ToolbarToggleButton } from "@fluentui/react-components";
 import {
   CodeRegular, LinkRegular, TextBoldRegular, TextItalicRegular, TextStrikethroughRegular,
@@ -17,7 +18,6 @@ import {
   SELECTION_CHANGE_COMMAND
 } from "lexical";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { BaseCard } from "~/Styles/Layout";
 import { getDOMRangeRect } from "../../Utils/getDOMRangeRect";
 import { getSelectedNode } from "../../Utils/getSelectedNode";
 import { setFloatingElemPosition } from "../../Utils/setFloatingElemPosition";

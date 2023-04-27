@@ -1,4 +1,7 @@
 import {
+  Dialog,
+  DialogSurface,
+  DialogTrigger,
   makeStyles, Menu, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTrigger, mergeClasses, tokens,
   Toolbar, ToolbarButton, ToolbarDivider, ToolbarToggleButton
 } from "@fluentui/react-components";
@@ -455,12 +458,17 @@ export function ToolbarPlugin(): JSX.Element {
                   Horizontal Rule
                 </MenuItem>
 
-                <MenuItem
-                  icon={<ImageRegular />}
-                  onClick={() => showModal(<InsertImageDialog editor={activeEditor} />)}
-                >
-                  Image
-                </MenuItem>
+                <Dialog>
+                  <DialogTrigger disableButtonEnhancement>
+                    <MenuItem icon={<ImageRegular />}>
+                      Image
+                    </MenuItem>
+                  </DialogTrigger>
+
+                  <DialogSurface>
+                    <InsertImageDialog editor={activeEditor} />
+                  </DialogSurface>
+                </Dialog>
 
                 <MenuItem
                   icon={<TableRegular />}

@@ -1,16 +1,16 @@
+import { Flex } from "@/Styles/Layout";
 import { makeStyles, Portal, shorthands } from "@fluentui/react-components";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { mergeRegister } from "@lexical/utils";
 import { $getRoot, $isParagraphNode } from "lexical";
 import { useEffect, useState } from "react";
-import { Flex } from "~/Styles/Layout";
 import { LexLockEditor } from "./Lock";
 import { LexConvertMarkdown } from "./Markdown";
 import { LexImExport } from "./Port";
 
 const useStyle = makeStyles({
   box: {
-    ...Flex,
+    ...Flex as any,
     columnGap: "3px",
     position: "absolute",
     ...shorthands.padding("10px"),

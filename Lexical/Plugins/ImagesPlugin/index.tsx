@@ -1,7 +1,6 @@
-import { ChoiceGroup, DefaultButton, Dialog, DialogFooter, TextField } from "@fluentui/react";
+import { Button, DialogActions, DialogBody, DialogContent, DialogTrigger, Field, Input } from "@fluentui/react-components";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $wrapNodeInElement, mergeRegister } from "@lexical/utils";
-import { useBoolean } from "ahooks";
 import {
   $createParagraphNode,
   $createRangeSelection,
@@ -34,46 +33,35 @@ export const INSERT_IMAGE_COMMAND: LexicalCommand<InsertImagePayload> =
   createCommand("INSERT_IMAGE_COMMAND");
 
 export function InsertImageDialog({ editor }: { editor: LexicalEditor }): JSX.Element {
-  const [mode, setMode] = useState<string>();
-  const [hidden, { setTrue }] = useBoolean();
-
   const [src, setSrc] = useState("https://source.unsplash.com/random");
   const [altText, setAltText] = useState("MusiLand is a non-profit creative trading platform powered by the community.");
 
   return (
-    <Dialog
-      hidden={hidden}
-      onDismiss={setTrue}
-      modalProps={{ isBlocking: true }}
-      dialogContentProps={{ title: "Insert Image" }}
-    >
-      <ChoiceGroup
-        label="From"
-        defaultSelectedKey="URL"
-        styles={{
-          flexContainer: {
-            display: "flex",
-            columnGap: "10px",
-          }
-        }}
-        options={[
-          { key: "URL", text: "URL" },
-          // TODO
-          { key: "File", text: "File", disabled: true },
-        ]}
-        onChange={(_, x) => setMode(x!.key)} />
+    <DialogBody>
+      <DialogBody>
+        Insert Image
+      </DialogBody>
 
-      <TextField label="Source" required placeholder={src} onChange={(_, v) => setSrc(v || "")} />
+      <DialogContent>
+        <Field label="Source" required>
+          <Input placeholder={src} onChange={(_, v) => setSrc(v.value || "")} />
+        </Field>
 
-      <TextField label="Alt Text" required placeholder={altText} onChange={(_, v) => setAltText(v || "")} />
+        <Field label="Alt Text" required>
+          <Input placeholder={altText} onChange={(_, v) => setAltText(v.value || "")} />
+        </Field>
+      </DialogContent>
 
-      <DialogFooter>
-        <DefaultButton onClick={() => {
-          editor.dispatchCommand(INSERT_IMAGE_COMMAND, { altText, src });
-          setTrue();
-        }} text="Confirm" />
-      </DialogFooter>
-    </Dialog>
+      <DialogActions>
+        <DialogTrigger disableButtonEnhancement>
+          <Button onClick={() => {
+            editor.dispatchCommand(INSERT_IMAGE_COMMAND, { altText, src });
+          }}>
+            Confirm
+          </Button>
+        </DialogTrigger>
+      </DialogActions>
+    </DialogBody>
   );
 }
 

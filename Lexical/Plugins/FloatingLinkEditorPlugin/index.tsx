@@ -1,4 +1,5 @@
-import { Button, Input, Link, makeStyles, Portal, shorthands, tokens } from "@fluentui/react-components";
+import { BaseCard, Col, Flex } from "@/Styles/Layout";
+import { Button, Input, Link, Portal, makeStyles, shorthands, tokens } from "@fluentui/react-components";
 import { EditFilled } from "@fluentui/react-icons";
 import { $isAutoLinkNode, $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
@@ -17,7 +18,6 @@ import {
   SELECTION_CHANGE_COMMAND
 } from "lexical";
 import { Dispatch, useCallback, useEffect, useRef, useState } from "react";
-import { BaseCard, Col, Flex } from "~/Styles/Layout";
 import { getSelectedNode } from "../../Utils/getSelectedNode";
 import { setFloatingElemPosition } from "../../Utils/setFloatingElemPosition";
 import { sanitizeUrl } from "../../Utils/url";
@@ -198,7 +198,7 @@ const box = {
 const useStyle = makeStyles({
   editor: {
     ...BaseCard,
-    ...Col,
+    ...Col as any,
     position: "absolute",
     top: 0,
     left: 0,
@@ -213,7 +213,7 @@ const useStyle = makeStyles({
     textOverflow: "ellipsis"
   },
   link: {
-    ...Flex,
+    ...Flex as any,
     justifyContent: "space-between",
     alignItems: "center",
     width: "calc(100% - 20px)",

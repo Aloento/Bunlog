@@ -1,5 +1,5 @@
 /** @from MusiLand */
-import { tokens } from "@fluentui/react-components";
+import { GriffelStyle, shorthands, tokens } from "@fluentui/react-components";
 import { CSSProperties } from "react";
 
 export const Flex: CSSProperties = { display: "flex" };
@@ -18,3 +18,10 @@ export const MidStyle: CSSProperties = {
   rowGap: tokens.spacingVerticalXL,
   flexGrow: 1
 }
+
+export const BaseCard: GriffelStyle = {
+  ...Flex as any,
+  backgroundColor: tokens.colorNeutralBackground1,
+  boxShadow: tokens.shadow4,
+  ...shorthands.borderRadius(tokens.borderRadiusMedium),
+};
