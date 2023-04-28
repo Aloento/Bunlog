@@ -1,8 +1,10 @@
 import { Flex } from "@/Styles/Layout";
 import { Link, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, Text, tokens } from "@fluentui/react-components";
 import { Code20Regular } from "@fluentui/react-icons";
+import { useBoolean } from "ahooks";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { CSSProperties } from "react";
+import { Register } from "./Register";
 
 export const NavH = 54;
 export const NavW = "1440px";
@@ -23,6 +25,7 @@ const menu: CSSProperties = {
  */
 export function TopNavBar() {
   const { data } = useSession();
+  const [open, { toggle }] = useBoolean();
 
   return (
     <header style={{
@@ -66,13 +69,15 @@ export function TopNavBar() {
                 {
                   data?.user?.name
                     ?
-                    <MenuItem onClick={() => signOut()}>Logout</MenuItem>
+                    <>
+                      <MenuItem disabled>{data.user.image}</MenuItem>
+                      <MenuItem>{data.user.email}</MenuItem>
+                      <MenuItem onClick={() => signOut()}>Logout</MenuItem>
+                    </>
                     :
                     <>
                       <MenuItem onClick={() => signIn()}>Login</MenuItem>
-                      <MenuItem>
-                        <Link appearance="subtle" href="/Register">Register</Link>
-                      </MenuItem>
+                      <MenuItem onClick={toggle}>Register</MenuItem>
                     </>
                 }
               </MenuList>
@@ -82,6 +87,8 @@ export function TopNavBar() {
           <Link appearance="subtle" href="https://github.com/Aloento/Bunlog" target="_blank">
             <Code20Regular />
           </Link>
+
+          <Register open={open} close={toggle} />
         </menu>
       </nav>
     </header>
