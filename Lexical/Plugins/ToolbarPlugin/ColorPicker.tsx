@@ -1,4 +1,4 @@
-import { Field, Input } from '@fluentui/react-components';
+import { Field, Input, tokens } from '@fluentui/react-components';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 interface IColorPicker {
@@ -85,11 +85,10 @@ export function ColorPicker({ color, onChange }: Readonly<IColorPicker>): JSX.El
 
   return (
     <div
-      className="color-picker-wrapper"
       style={{ width: WIDTH }}
       ref={innerDivRef}
     >
-      <Field label="Hex">
+      <Field label="Hex" style={{ paddingBottom: tokens.spacingVerticalS }}>
         <Input onChange={(_, v) => onSetHex(v.value)} value={inputColor} />
       </Field>
 

@@ -87,10 +87,6 @@ span.LexEditor_Image {
   user-select: none;
 }
 
-.color-picker-wrapper {
-  padding: 20px;
-}
-
 .color-picker-basic-color {
   display: flex;
   flex-wrap: wrap;
