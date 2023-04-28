@@ -1,6 +1,7 @@
 import { Flex } from "@/Styles/Layout";
-import { Link, Text, tokens } from "@fluentui/react-components";
+import { Link, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, Text, tokens } from "@fluentui/react-components";
 import { Code20Regular } from "@fluentui/react-icons";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { CSSProperties } from "react";
 
 export const NavH = 54;
@@ -21,6 +22,8 @@ const menu: CSSProperties = {
  * @version 0.1.0
  */
 export function TopNavBar() {
+  const { data } = useSession();
+
   return (
     <header style={{
       position: "fixed",
@@ -31,7 +34,7 @@ export function TopNavBar() {
       backgroundColor: "#fff",
       boxSizing: "border-box",
       boxShadow: tokens.shadow4,
-      zIndex: Number.MAX_SAFE_INTEGER
+      zIndex: 1
     }}>
       <nav style={{
         ...Flex,
@@ -49,8 +52,32 @@ export function TopNavBar() {
           <Link href="/Tags" appearance="subtle">Tags</Link>
         </menu>
 
-        <menu style={menu}>
-          <Link href="/Account" appearance="subtle">Account</Link>
+        <menu style={{
+          ...menu,
+          alignItems: "start"
+        }}>
+          <Menu>
+            <MenuTrigger disableButtonEnhancement>
+              <Link appearance="subtle">{data?.user?.name ?? "Account"}</Link>
+            </MenuTrigger>
+
+            <MenuPopover>
+              <MenuList>
+                {
+                  data?.user?.name
+                    ?
+                    <MenuItem onClick={() => signOut()}>Logout</MenuItem>
+                    :
+                    <>
+                      <MenuItem onClick={() => signIn()}>Login</MenuItem>
+                      <MenuItem>
+                        <Link appearance="subtle" href="/Register">Register</Link>
+                      </MenuItem>
+                    </>
+                }
+              </MenuList>
+            </MenuPopover>
+          </Menu>
 
           <Link appearance="subtle" href="https://github.com/Aloento/Bunlog" target="_blank">
             <Code20Regular />

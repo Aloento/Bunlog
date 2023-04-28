@@ -11,7 +11,8 @@ export const authOptions: AuthOptions = {
       return {
         id: "Aloento",
         name: "Aloento",
-        email: "Me@Aloen.to"
+        email: "Me@Aloen.to",
+        image: "Admin"
       };
     }
   })]

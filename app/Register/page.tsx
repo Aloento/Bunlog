@@ -10,7 +10,7 @@ import { signIn, useSession } from "next-auth/react";
  * @since 0.1.0
  * @version 0.1.0
  */
-export default function AccoPage() {
+export default function RegiPage() {
   const { data } = useSession();
 
   return (
