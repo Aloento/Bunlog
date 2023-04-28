@@ -2,8 +2,8 @@
 
 import { Lexical } from "@/Lexical";
 import { ExampleRichText } from "@/Lexical/Example";
-import { BaseCard, MidStyle } from "@/Styles/Layout";
-import { Field, Input, tokens } from "@fluentui/react-components";
+import { BaseCard, Flex, MidStyle } from "@/Styles/Layout";
+import { Button, Divider, Field, Input, Textarea, tokens } from "@fluentui/react-components";
 
 /**
  * 
@@ -14,9 +14,13 @@ import { Field, Input, tokens } from "@fluentui/react-components";
  */
 export default function PostPage() {
   return (
-    <div style={MidStyle}>
+    <div style={{
+      ...MidStyle,
+      rowGap: tokens.spacingVerticalXXL
+    }}>
       <Field>
-        <Input appearance="underline" contentBefore="Title" placeholder="Welcome to the Playground" style={{
+        <Input appearance="underline" contentBefore="Title" placeholder="Welcome to the Playground" size="large" style={{
+          marginTop: "-10px",
           fontSize: tokens.fontSizeBase600,
           columnGap: tokens.spacingHorizontalMNudge
         }} />
@@ -24,6 +28,34 @@ export default function PostPage() {
 
       <div style={BaseCard as any}>
         <Lexical State={ExampleRichText} />
+      </div>
+
+      <Divider />
+
+      <Field label="Abstract" size="large">
+        <Textarea resize="vertical" />
+      </Field>
+
+      <Field label="Categories" size="large">
+        <Input />
+      </Field>
+
+      <Field label="Tags" size="large">
+        <Input />
+      </Field>
+
+      <div style={{
+        ...Flex,
+        columnGap: tokens.spacingHorizontalS,
+        alignSelf: "end"
+      }}>
+        <Button>
+          Cancel
+        </Button>
+
+        <Button appearance="primary">
+          Submit
+        </Button>
       </div>
     </div>
   )

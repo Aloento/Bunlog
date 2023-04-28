@@ -7,6 +7,13 @@ import { LexicalNodes } from "./Nodes/LexicalNodes";
 import { TableContext } from "./Plugins/TablePlugin";
 import { useLexEditorTheme } from "./Themes/LexEditorTheme";
 
+/**
+ * Lexical Editor
+ *
+ * @author Aloento
+ * @since MusiLand 0.5.0
+ * @version 0.1.0
+ */
 export function Lexical({
   Namespace = "Aloento",
   Plugin = LexRichTextPreset,
