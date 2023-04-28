@@ -1,5 +1,8 @@
 "use client";
 
+import { Button } from "@fluentui/react-components";
+import { signIn, useSession } from "next-auth/react";
+
 /**
  * 
  *
@@ -8,9 +11,11 @@
  * @version 0.1.0
  */
 export default function AccoPage() {
+  const { data } = useSession();
+
   return (
     <div>
-      Not Implement
+      <Button onClick={() => signIn()}>{JSON.stringify(data)}</Button>
     </div>
   )
 }

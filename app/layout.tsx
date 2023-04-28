@@ -5,8 +5,11 @@ import { NavH, NavW, TopNavBar } from "@/Components/TopNavBar";
 import { Calc, Unit } from "@/Styles";
 import { ColFlex } from "@/Styles/Layout";
 import { FluentProvider, tokens, webLightTheme } from "@fluentui/react-components";
+import { useRequest } from "ahooks";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
 import "./index.css";
 
 dayjs.extend(relativeTime)
@@ -19,6 +22,11 @@ dayjs.extend(relativeTime)
  * @version 0.1.0
  */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const { data } = useRequest(async () => {
+    const res = await fetch("/api/auth/session");
+    return await res.json() as Session;
+  }, { cacheKey: "Auth" });
+
   return (
     <html lang="en">
       <head>
@@ -32,33 +40,35 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>Aloento's Blog</title>
       </head>
 
-      <FluentProvider as={"body" as any} theme={webLightTheme} applyStylesToPortals>
-        <TopNavBar />
+      <SessionProvider session={data}>
+        <FluentProvider as={"body" as any} theme={webLightTheme} applyStylesToPortals>
+          <TopNavBar />
 
-        <div style={{
-          ...ColFlex,
-          minWidth: "1024px",
-          position: "absolute",
-          paddingTop: Calc(Unit(NavH), "+", tokens.spacingVerticalXXXL),
-          width: "100%",
-          height: "-webkit-fill-available",
-          justifyContent: "space-between",
-          backgroundColor: tokens.colorNeutralBackground3
-        }}>
-          <main style={{
-            maxWidth: NavW,
-            width: "-webkit-fill-available",
-            marginLeft: "auto",
-            marginRight: "auto",
-            paddingLeft: tokens.spacingHorizontalS,
-            paddingRight: tokens.spacingHorizontalS,
+          <div style={{
+            ...ColFlex,
+            minWidth: "1024px",
+            position: "absolute",
+            paddingTop: Calc(Unit(NavH), "+", tokens.spacingVerticalXXXL),
+            width: "100%",
+            height: "-webkit-fill-available",
+            justifyContent: "space-between",
+            backgroundColor: tokens.colorNeutralBackground3
           }}>
-            {children}
-          </main>
+            <main style={{
+              maxWidth: NavW,
+              width: "-webkit-fill-available",
+              marginLeft: "auto",
+              marginRight: "auto",
+              paddingLeft: tokens.spacingHorizontalS,
+              paddingRight: tokens.spacingHorizontalS,
+            }}>
+              {children}
+            </main>
 
-          <Footer />
-        </div>
-      </FluentProvider>
+            <Footer />
+          </div>
+        </FluentProvider>
+      </SessionProvider>
     </html>
   )
 }
