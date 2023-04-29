@@ -1,7 +1,7 @@
 "use client";
 
 import { ColLayout } from "@/Components/ColLayout";
-import { PostCard } from "./Home/PostCard";
+import { PostCard } from "../Components/PostCard";
 
 /**
  * 

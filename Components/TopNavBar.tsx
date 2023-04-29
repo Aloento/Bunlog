@@ -1,6 +1,5 @@
 import { Flex } from "@/Styles/Layout";
-import { Link, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, Text, tokens } from "@fluentui/react-components";
-import { Code20Regular } from "@fluentui/react-icons";
+import { Link, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, tokens } from "@fluentui/react-components";
 import { useBoolean } from "ahooks";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { CSSProperties } from "react";
@@ -48,47 +47,37 @@ export function TopNavBar() {
         justifyContent: "space-between"
       }}>
         <menu style={menu}>
-          <Text>Aloento</Text>
-          <Link href="/" appearance="subtle">Home</Link>
-          <Link href="/Archives" appearance="subtle">Archives</Link>
-          <Link href="/Categories" appearance="subtle">Categories</Link>
-        </menu>
-
-        <menu style={{
-          ...menu,
-          alignItems: "start"
-        }}>
-          <Menu>
-            <MenuTrigger disableButtonEnhancement>
-              <Link appearance="subtle">{data?.user?.name ?? "Account"}</Link>
-            </MenuTrigger>
-
-            <MenuPopover>
-              <MenuList>
-                {
-                  data?.user?.name
-                    ?
-                    <>
-                      <MenuItem disabled>{data.user.image}</MenuItem>
-                      <MenuItem>{data.user.email}</MenuItem>
-                      <MenuItem onClick={() => signOut()}>Logout</MenuItem>
-                    </>
-                    :
-                    <>
-                      <MenuItem onClick={() => signIn()}>Login</MenuItem>
-                      <MenuItem onClick={toggle}>Register</MenuItem>
-                    </>
-                }
-              </MenuList>
-            </MenuPopover>
-          </Menu>
-
+          <Link href="/" appearance="subtle">Aloento</Link>
           <Link appearance="subtle" href="https://github.com/Aloento/Bunlog" target="_blank">
-            <Code20Regular />
+            Source Code
           </Link>
-
           <Register open={open} close={toggle} />
         </menu>
+
+        <Menu>
+          <MenuTrigger disableButtonEnhancement>
+            <Link appearance="subtle">{data?.user?.name ?? "Account"}</Link>
+          </MenuTrigger>
+
+          <MenuPopover>
+            <MenuList>
+              {
+                data?.user?.name
+                  ?
+                  <>
+                    <MenuItem disabled>{data.user.image}</MenuItem>
+                    <MenuItem>{data.user.email}</MenuItem>
+                    <MenuItem onClick={() => signOut()}>Logout</MenuItem>
+                  </>
+                  :
+                  <>
+                    <MenuItem onClick={() => signIn()}>Login</MenuItem>
+                    <MenuItem onClick={toggle}>Register</MenuItem>
+                  </>
+              }
+            </MenuList>
+          </MenuPopover>
+        </Menu>
       </nav>
     </header>
   )
