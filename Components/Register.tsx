@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogBody, DialogContent, DialogSurface, DialogTitle, DialogTrigger } from "@fluentui/react-components";
+import { Button, Dialog, DialogActions, DialogBody, DialogContent, DialogSurface, DialogTitle, DialogTrigger, Field, Input } from "@fluentui/react-components";
 
 /**
  * Register Modal
@@ -15,7 +15,17 @@ export function Register({ open, close }: { open: boolean, close: () => void }) 
           <DialogTitle>Create New Account</DialogTitle>
 
           <DialogContent>
-            123
+            <Field label="User Name" required>
+              <Input />
+            </Field>
+
+            <Field label="E-Mail" required>
+              <Input type="email" />
+            </Field>
+
+            <Field label="Password" required>
+              <Input type="password" />
+            </Field>
           </DialogContent>
 
           <DialogActions>

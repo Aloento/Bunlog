@@ -47,22 +47,6 @@ export default function ArtiPage() {
 
       <Lexical Plugin={LexDisplayPreset} Display Editable={false} State={ExampleRichText} />
 
-      <Divider />
-
-      <div style={{
-        ...Flex,
-        flexWrap: "wrap",
-        gap: tokens.spacingHorizontalSNudge,
-        color: tokens.colorNeutralForeground3,
-      }}>
-        <Caption1>#</Caption1>
-        <Caption1>123</Caption1>
-        <Caption1>123</Caption1>
-        <Caption1>123</Caption1>
-        <Caption1>123</Caption1>
-        <Caption1>123</Caption1>
-        <Caption1>123</Caption1>
-      </div>
     </ColLayout>
   )
 }

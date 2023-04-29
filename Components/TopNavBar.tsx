@@ -52,7 +52,6 @@ export function TopNavBar() {
           <Link href="/" appearance="subtle">Home</Link>
           <Link href="/Archives" appearance="subtle">Archives</Link>
           <Link href="/Categories" appearance="subtle">Categories</Link>
-          <Link href="/Tags" appearance="subtle">Tags</Link>
         </menu>
 
         <menu style={{
