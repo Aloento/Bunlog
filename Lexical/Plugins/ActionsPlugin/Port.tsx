@@ -12,8 +12,8 @@ export function LexImExport(): JSX.Element {
 
     <Button appearance="outline" icon={<SaveRegular />}
       onClick={() => exportFile(editor, {
-        fileName: `Playground ${new Date().toISOString()}`,
-        source: 'Playground',
+        fileName: `Bunlog ${new Date().toISOString()}`,
+        source: 'Bunlog',
       })} />
   </>;
 }
