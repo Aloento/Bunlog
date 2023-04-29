@@ -1,5 +1,6 @@
-import { ColFlex, LRColStyle } from "@/Styles/Layout";
-import { Body1, Body1Strong, Caption1, Card, CardHeader, Link, tokens } from "@fluentui/react-components";
+import { ColFlex, Flex, LRColStyle } from "@/Styles/Layout";
+import { Body1, Body1Strong, Button, Caption1, Card, CardHeader, Link, tokens } from "@fluentui/react-components";
+import { DeleteRegular, DocumentJavascriptRegular, DocumentPdfRegular, EditRegular } from "@fluentui/react-icons";
 
 /**
  * 
@@ -11,6 +12,20 @@ import { Body1, Body1Strong, Caption1, Card, CardHeader, Link, tokens } from "@f
 export function CommRight() {
   return (
     <div style={LRColStyle}>
+      <Card size="large">
+        <CardHeader header={<Body1>TOOLS</Body1>} />
+
+        <div style={{
+          ...Flex,
+          justifyContent: "space-around"
+        }}>
+          <Button icon={<EditRegular />} appearance="subtle" />
+          <Button icon={<DeleteRegular />} appearance="subtle" />
+          <Button icon={<DocumentPdfRegular />} appearance="subtle" />
+          <Button icon={<DocumentJavascriptRegular />} appearance="subtle" />
+        </div>
+      </Card>
+
       <Card size="large">
         <CardHeader header={<Body1>RECENTS</Body1>} />
 

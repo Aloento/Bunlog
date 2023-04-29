@@ -74,7 +74,9 @@ export default function ArtiPage() {
 
       <Card>
         <CardHeader
-          image={<Avatar image={{ src: gravatarUrl("aloento@q-audio.org") }} />}
+          image={<Avatar image={{
+            src: gravatarUrl("aloento@q-audio.org", { default: "retro" })
+          }} />}
           header={
             <div style={{
               ...Flex,
