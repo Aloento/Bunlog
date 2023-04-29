@@ -7,7 +7,7 @@ import { CSSProperties } from "react";
 export interface IStatistics {
   Posts: number;
   Categories: number;
-  Tags: number;
+  Comments: number;
 }
 
 /**
@@ -60,18 +60,18 @@ export function PersonCard() {
         paddingTop: tokens.spacingVerticalS
       }}>
         <div style={sta}>
-          <Body1>POSTS</Body1>
-          <Title3>{data?.Posts}</Title3>
-        </div>
-
-        <div style={sta}>
           <Body1>CATEGORIES</Body1>
           <Title3>{data?.Categories}</Title3>
         </div>
 
         <div style={sta}>
-          <Body1>TAGS</Body1>
-          <Title3>{data?.Tags}</Title3>
+          <Body1>POSTS</Body1>
+          <Title3>{data?.Posts}</Title3>
+        </div>
+
+        <div style={sta}>
+          <Body1>COMMENTS</Body1>
+          <Title3>{data?.Comments}</Title3>
         </div>
       </div>
     </Card>
