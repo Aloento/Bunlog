@@ -24,6 +24,14 @@ export function CommLeft() {
           gap: tokens.spacingHorizontalS
         }}>
           <Pill />
+          <Pill />
+          <Pill />
+          <Pill />
+          <Pill />
+          <Pill />
+          <Pill />
+          <Pill />
+          <Pill />
         </div>
       </Card>
     </div>

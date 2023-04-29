@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands, tokens } from "@fluentui/react-components";
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import { CheckListPlugin } from "@lexical/react/LexicalCheckListPlugin";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
@@ -28,6 +29,7 @@ import { ToolbarPlugin } from "./Plugins/ToolbarPlugin";
 import { useLexEditorTheme } from "./Themes/LexEditorTheme";
 import { LexContentEditable } from "./UI/ContentEditable";
 import { Placeholder } from "./UI/Placeholder";
+import { SetCurrentEditor } from "./Utils";
 
 const useStyle = makeStyles({
   shell: {
@@ -48,6 +50,8 @@ const useStyle = makeStyles({
 });
 
 export function LexEditor(): JSX.Element {
+  SetCurrentEditor(useLexicalComposerContext()[0]);
+
   const { Namespace, OnError, Placeholder: ph, Display, Plugin: {
     Actions,
     AutoFocus,

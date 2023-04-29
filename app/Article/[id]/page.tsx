@@ -17,7 +17,7 @@ import gravatarUrl from "gravatar-url";
  * @since 0.1.0
  * @version 0.1.0
  */
-export default function ArtiPage() {
+export default function ArtiPage({ id }: { id: number }) {
   return (
     <ColLayout>
       <Card style={{
