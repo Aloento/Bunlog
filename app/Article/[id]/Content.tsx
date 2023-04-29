@@ -6,7 +6,7 @@ import { Flex } from "@/Styles/Layout";
 import { Caption1, Card, CardHeader, Divider, Link, Title3, tokens } from "@fluentui/react-components";
 import dayjs from "dayjs";
 
-export interface IArticleContent {
+export interface IArticle {
   Title: string;
   Posted: Date;
   Categories: string[];
@@ -20,7 +20,7 @@ export interface IArticleContent {
  * @since 0.1.0
  * @version 0.1.0
  */
-export function ArticleContent({ Title, Posted, Categories, Content }: IArticleContent) {
+export function ArticleContent({ Title, Posted, Categories, Content }: IArticle) {
   return (
     <Card style={{
       padding: [tokens.spacingHorizontalM, tokens.spacingHorizontalXL, tokens.spacingHorizontalXXL].join(" "),
