@@ -4,7 +4,7 @@ import { ColLayout } from "@/Components/ColLayout";
 import { Divider } from "@fluentui/react-components";
 import { Comment } from "./Comment";
 import { ArticleContent } from "./Content";
-import { PostComment } from "./PostComment";
+import { PostComment } from "./Post";
 
 /**
  * 
@@ -21,6 +21,8 @@ export default function ArtiPage({ id }: { id: number }) {
       <Divider />
 
       <PostComment />
+
+      <Divider />
 
       <Comment />
     </ColLayout>
