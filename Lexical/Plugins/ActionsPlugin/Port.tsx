@@ -13,7 +13,7 @@ export function LexImExport(): JSX.Element {
     <Button appearance="outline" icon={<SaveRegular />}
       onClick={() => exportFile(editor, {
         fileName: `Bunlog ${new Date().toISOString()}`,
-        source: 'Bunlog',
+        source: "Bunlog",
       })} />
   </>;
 }

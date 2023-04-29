@@ -3,7 +3,7 @@ import { Lexical } from "@/Lexical";
 import { LexDisplayPreset } from "@/Lexical/Context/Display";
 import { ExampleRichText } from "@/Lexical/Example";
 import { Flex } from "@/Styles/Layout";
-import { Caption1, Card, CardHeader, Divider, Link, Title3, tokens } from "@fluentui/react-components";
+import { Caption1, Card, CardHeader, Divider, Title3, tokens } from "@fluentui/react-components";
 import dayjs from "dayjs";
 
 export interface IArticle {
@@ -27,11 +27,7 @@ export function ArticleContent({ Title, Posted, Categories, Content }: IArticle)
     }}>
       <CardHeader
         style={{ rowGap: tokens.spacingVerticalS }}
-        header={
-          <Link appearance="subtle" href="/Article">
-            <Title3>Video processing with WebCodecs</Title3>
-          </Link>
-        }
+        header={<Title3>Video processing with WebCodecs</Title3>}
         description={
           <div style={{
             ...Flex,
