@@ -16,6 +16,10 @@ span.LexEditor_Image {
   user-select: none;
 }
 
+.LexEditor_Shell {
+  width: 100%;
+}
+
 .LexEditor_Image img {
   max-width: 100%;
   cursor: default;

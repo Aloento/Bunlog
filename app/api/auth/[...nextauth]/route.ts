@@ -1,6 +1,13 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
+/**
+ * 
+ *
+ * @author Aloento
+ * @since 0.1.0
+ * @version 0.1.0
+ */
 export const authOptions: AuthOptions = {
   providers: [Credentials({
     credentials: {

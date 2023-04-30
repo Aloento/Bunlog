@@ -12,7 +12,7 @@ import { Button, Divider, Field, Input, Textarea, tokens } from "@fluentui/react
  * @since 0.1.0
  * @version 0.1.0
  */
-export default function PostPage() {
+export default function PostPage({ params: { id } }: { params: { id: string[] } }) {
   return (
     <div style={{
       ...MidStyle,

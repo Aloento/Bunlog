@@ -13,10 +13,10 @@ import { PostComment } from "./Post";
  * @since 0.1.0
  * @version 0.1.0
  */
-export default function ArtiPage({ params }: { params: { id: string } }) {
+export default function ArtiPage({ params: { id } }: { params: { id: string } }) {
   return (
     <ColLayout>
-      <ArticleContent Id={parseInt(params.id)} />
+      <ArticleContent Id={parseInt(id)} />
 
       <Divider />
 
