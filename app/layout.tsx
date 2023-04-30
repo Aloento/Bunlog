@@ -56,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             justifyContent: "space-between",
           }}>
             <main style={{
+              width: "100%",
               maxWidth: NavW,
               marginLeft: "auto",
               marginRight: "auto",

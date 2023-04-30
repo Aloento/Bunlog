@@ -65,9 +65,11 @@ export function TopNavBar() {
                 data?.user?.name
                   ?
                   <>
-                    <MenuItem>
-                      <Link appearance="subtle" href="/Post">New Article</Link>
-                    </MenuItem>
+                    <Link appearance="subtle" href="/Post">
+                      <MenuItem>
+                        New Article
+                      </MenuItem>
+                    </Link>
 
                     <MenuItem>{data.user.email}</MenuItem>
                     <MenuItem onClick={() => signOut()}>Logout</MenuItem>

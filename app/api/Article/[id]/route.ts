@@ -18,7 +18,7 @@ export async function GET(request: Request, { params: { id } }: { params: { id: 
 }
 
 export async function PATCH(request: Request, { params: { id } }: { params: { id: string } }) {
-
+  return new Response();
 }
 
 export async function DELETE(request: Request, { params: { id } }: { params: { id: string } }) {
