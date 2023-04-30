@@ -1,4 +1,5 @@
 import { IStatistics } from '@/Components/PersonCard'
+import { prisma } from '..'
 
 /**
  * 
@@ -9,8 +10,8 @@ import { IStatistics } from '@/Components/PersonCard'
  */
 export async function GET(request: Request) {
   return new Response(JSON.stringify({
-    Posts: 10,
-    Categories: 16,
-    Comments: 23
+    Posts: await prisma.post.count(),
+    Categories: await prisma.category.count(),
+    Comments: await prisma.comment.count()
   } as IStatistics))
 }
