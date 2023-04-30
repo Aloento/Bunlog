@@ -21,7 +21,7 @@ export default function ArtiPage({ params: { id } }: { params: { id: string } })
     throw TypeError(`Id is Not a Number: ${id}`);
 
   const { data } = useRequest(async () => {
-    const res = await fetch(`/api/Article/${Id}/cmt`);
+    const res = await fetch(`/api/Article/${Id}/Comments`);
     return await res.json() as number[];
   }, { cacheKey: `cmtlist${Id}` });
 

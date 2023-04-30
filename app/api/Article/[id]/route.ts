@@ -7,9 +7,7 @@ import { IArticle } from "@/app/Article/[id]/Content";
  * @since 0.1.0
  * @version 0.1.0
  */
-export async function GET(request: Request) {
-  const id = new URL(request.url).pathname.split("/").reverse()[0];
-
+export async function GET(request: Request, { params: { id } }: { params: { id: string } }) {
   const post: IArticle = {
     Title: "Video processing with WebCodecs",
     Posted: new Date(),
