@@ -1,7 +1,8 @@
 import { PersonCard } from "@/Components/PersonCard";
 import { Flex, LRColStyle } from "@/Styles/Layout";
 import { Body1, Card, CardHeader, tokens } from "@fluentui/react-components";
-import { Pill } from "./Pill";
+import { useRequest } from "ahooks";
+import { IPill, Pill } from "./Pill";
 
 /**
  * 
@@ -11,6 +12,13 @@ import { Pill } from "./Pill";
  * @version 0.1.0
  */
 export function CommLeft() {
+  const { data } = useRequest(async () => {
+    const res = await fetch("/api/Categories");
+    return await res.json() as IPill[];
+  }, {
+    cacheKey: `pill`
+  });
+
   return (
     <div style={LRColStyle}>
       <PersonCard />
@@ -23,15 +31,7 @@ export function CommLeft() {
           flexWrap: "wrap",
           gap: tokens.spacingHorizontalS
         }}>
-          <Pill />
-          <Pill />
-          <Pill />
-          <Pill />
-          <Pill />
-          <Pill />
-          <Pill />
-          <Pill />
-          <Pill />
+          {data?.map(x => <Pill {...x} />)}
         </div>
       </Card>
     </div>

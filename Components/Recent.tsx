@@ -11,25 +11,7 @@ import { IMetadata } from "./PostCard";
  * @since 0.1.0
  * @version 0.1.0
  */
-export function Recents() {
-  const { data } = useRequest(async () => {
-    const res = await fetch("/api/Article?" + new URLSearchParams({ limit: "9" }));
-    return await res.json() as number[];
-  }, {
-    cacheKey: `list9`
-  });
-
-  return (
-    <Card size="large" style={{ rowGap: tokens.spacingVerticalXXL }}>
-      <CardHeader header={<Body1>RECENTS</Body1>} />
-
-      {data?.map(x => <Recent Id={x} />)}
-
-    </Card>
-  );
-}
-
-function Recent({ Id }: { Id: number }) {
+export function Recent({ Id }: { Id: number }) {
   const { data: meta } = useRequest(async () => {
     const res = await fetch(`/api/Article/${Id}`);
     return await res.json() as IMetadata;
