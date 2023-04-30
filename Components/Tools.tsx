@@ -1,11 +1,13 @@
 import { CurrentEditor } from "@/Lexical/Utils";
 import { Flex } from "@/Styles/Layout";
-import { Body1, Button, Card, CardHeader } from "@fluentui/react-components";
+import { Body1, Button, Card, CardHeader, Link } from "@fluentui/react-components";
 import { DeleteRegular, DocumentJavascriptRegular, DocumentPdfRegular, EditRegular } from "@fluentui/react-icons";
 import { exportFile } from "@lexical/file";
 import { Admin } from "./User";
 
 export function Tools() {
+  const id = location.pathname.split("/").reverse()[0];
+
   return (
     CurrentEditor &&
     <Card size="large">
@@ -16,8 +18,17 @@ export function Tools() {
         justifyContent: "space-around"
       }}>
         <Admin>
-          <Button icon={<EditRegular />} appearance="subtle" />
-          <Button icon={<DeleteRegular />} appearance="subtle" />
+          <Link appearance="subtle" href={`/Post/${id}`}>
+            <Button icon={<EditRegular />} appearance="subtle" />
+          </Link>
+
+          <Button icon={<DeleteRegular />} appearance="subtle" onClick={async () => {
+            await fetch(`/api/Article/${id}`, {
+              method: "DELETE"
+            });
+
+            location.href = "/";
+          }} />
         </Admin>
 
         <Button icon={<DocumentPdfRegular />} appearance="subtle" onClick={() => {
