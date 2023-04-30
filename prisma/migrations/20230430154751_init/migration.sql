@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL PRIMARY KEY,
     "email" TEXT NOT NULL,
     "hash" TEXT NOT NULL
 );
@@ -35,9 +35,9 @@ CREATE TABLE "Comment" (
     "content" TEXT NOT NULL,
     "posted" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "postId" INTEGER NOT NULL,
-    "userId" INTEGER NOT NULL,
+    "userName" TEXT NOT NULL,
     CONSTRAINT "Comment_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Comment_userName_fkey" FOREIGN KEY ("userName") REFERENCES "User" ("name") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateIndex
