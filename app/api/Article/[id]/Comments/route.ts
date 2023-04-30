@@ -1,3 +1,5 @@
+import { prisma } from "@/app/api";
+
 /**
  * 
  *
@@ -6,5 +8,6 @@
  * @version 0.1.0
  */
 export async function GET(request: Request, { params: { id } }: { params: { id: string } }) {
-  return new Response(JSON.stringify([123, 321]));
+  const list = await prisma.comment.findMany({ where: { postId: parseInt(id) }, select: { id: true } });
+  return new Response(JSON.stringify(list.map(x => x.id)));
 }
