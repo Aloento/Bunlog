@@ -41,7 +41,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <SessionProvider session={data}>
-        <FluentProvider as={"body" as any} theme={webLightTheme} applyStylesToPortals>
+        <FluentProvider as={"body" as any} theme={webLightTheme} applyStylesToPortals style={{
+          backgroundColor: tokens.colorNeutralBackground3
+        }}>
           <TopNavBar />
 
           <div style={{
@@ -50,17 +52,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             position: "absolute",
             paddingTop: Calc(Unit(NavH), "+", tokens.spacingVerticalXXXL),
             width: "100%",
-            height: "-webkit-fill-available",
+            height: "100%",
             justifyContent: "space-between",
-            backgroundColor: tokens.colorNeutralBackground3
           }}>
             <main style={{
               maxWidth: NavW,
-              width: "-webkit-fill-available",
               marginLeft: "auto",
               marginRight: "auto",
               paddingLeft: tokens.spacingHorizontalS,
               paddingRight: tokens.spacingHorizontalS,
+              paddingBottom: tokens.spacingVerticalXXXL
             }}>
               {children}
             </main>

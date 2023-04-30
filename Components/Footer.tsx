@@ -11,8 +11,7 @@ import { NavW } from "./TopNavBar";
 export function Footer() {
   return (
     <footer style={{
-      width: "-webkit-fill-available",
-      marginTop: "27px",
+      width: "100%",
       padding: "27px 0",
       backgroundColor: "white"
     }}>

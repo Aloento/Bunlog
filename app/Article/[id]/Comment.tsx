@@ -1,6 +1,7 @@
 "use client";
 import { Flex } from "@/Styles/Layout";
 import { Avatar, Body1, Body1Stronger, Caption1, Card, CardHeader } from "@fluentui/react-components";
+import { useRequest } from "ahooks";
 import dayjs from "dayjs";
 import gravatarUrl from "gravatar-url";
 
@@ -18,7 +19,11 @@ export interface IComment {
  * @since 0.1.0
  * @version 0.1.0
  */
-export function Comment({ Name, EMail, Posted, Content }: IComment) {
+export function Comment({ Id }: { Id: number }) {
+  const { data } = useRequest(async () => {
+
+  }, { cacheKey: `cmt${Id}` });
+
   return (
     <Card>
       <CardHeader

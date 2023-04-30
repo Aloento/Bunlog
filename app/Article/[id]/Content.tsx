@@ -23,14 +23,11 @@ export interface IArticle {
  * @version 0.1.0
  */
 export function ArticleContent({ Id }: { Id: number }) {
-  if (isNaN(Id))
-    throw TypeError("Id is Not a Number");
-
   const { data } = useRequest(async () => {
     const res = await fetch(`/api/Article/${Id}`);
     return await res.json() as IArticle;
   }, {
-    cacheKey: Id.toString()
+    cacheKey: `post${Id}`
   });
 
   const { Title, Posted, Categories, Content } = data || {
