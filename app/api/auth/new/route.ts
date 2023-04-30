@@ -22,7 +22,8 @@ export async function POST(request: Request) {
       name: Name.trim().normalize(),
       email: EMail.trim().normalize().toUpperCase(),
       hash: createHash("sha256").update(Hash.trim().normalize()).digest("base64")
-    }
+    },
+    select: {}
   })
 
   return new Response(null, { status: 201 })

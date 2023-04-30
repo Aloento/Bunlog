@@ -1,4 +1,5 @@
 import { SerializedEditorState } from "lexical";
+import { prisma } from "..";
 
 /**
  * 
@@ -8,7 +9,16 @@ import { SerializedEditorState } from "lexical";
  * @version 0.1.0
  */
 export async function GET(request: Request) {
-  return new Response(JSON.stringify([123, 321]));
+  const limit = new URL(request.url).searchParams.get("limit");
+
+  const res = await prisma.post.findMany({
+    select: {
+      id: true
+    },
+    take: limit ? parseInt(limit) : undefined
+  })
+
+  return new Response(JSON.stringify(res.map(x => x.id)));
 }
 
 export interface IPost {
@@ -26,6 +36,28 @@ export interface IPost {
  * @version 0.1.0
  */
 export async function POST(request: Request) {
+  const { Title, Content, Abstract, Categories } = await request.json() as IPost;
+
+  const { id } = await prisma.post.create({
+    data: {
+      title: Title.trim().normalize(),
+      content: JSON.stringify(Content),
+      abstract: Abstract,
+    },
+    select: {
+      id: true
+    }
+  })
+
+  for (const c of Categories) {
+    const find = await prisma.category.count({ where: { name: c } });
+
+    if (!find)
+      await prisma.category.create({ data: { name: c }, select: {} });
+
+    await prisma.postCate.create({ data: { postId: id, categoryName: c }, select: {} });
+  }
+
   return new Response(null, {
     status: 201
   })

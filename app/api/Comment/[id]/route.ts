@@ -45,10 +45,11 @@ export async function POST(request: Request, { params: { id } }: { params: { id:
 
   await prisma.comment.create({
     data: {
-      content: await request.text(),
+      content: (await request.text()).trim().normalize(),
       postId: parseInt(id),
       userName: s!.user!.name!
-    }
+    },
+    select: {}
   })
 
   return new Response(null, {
