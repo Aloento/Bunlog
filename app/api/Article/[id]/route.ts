@@ -1,4 +1,4 @@
-import { IAbstract } from "@/Components/PostCard";
+import { IMetadata } from "@/Components/PostCard";
 
 /**
  * 
@@ -8,7 +8,7 @@ import { IAbstract } from "@/Components/PostCard";
  * @version 0.1.0
  */
 export async function GET(request: Request, { params: { id } }: { params: { id: string } }) {
-  const post: IAbstract = {
+  const post: IMetadata = {
     Title: "Video processing with WebCodecs",
     Posted: new Date(),
     Categories: ["PROGRAM", "FRONTEND", "WEBCODECS"],

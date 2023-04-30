@@ -1,5 +1,5 @@
 "use client";
-import { IAbstract } from "@/Components/PostCard";
+import { IMetadata } from "@/Components/PostCard";
 import { Lexical } from "@/Lexical";
 import { LexDisplayPreset } from "@/Lexical/Context/Display";
 import { CurrentEditor } from "@/Lexical/Utils";
@@ -20,7 +20,7 @@ import { Helmet } from "react-helmet";
 export function ArticleContent({ Id }: { Id: number }) {
   const { data: meta } = useRequest(async () => {
     const res = await fetch(`/api/Article/${Id}`);
-    return await res.json() as IAbstract;
+    return await res.json() as IMetadata;
   }, {
     cacheKey: `meta${Id}`
   });

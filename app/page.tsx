@@ -1,6 +1,7 @@
 "use client";
 
 import { ColLayout } from "@/Components/ColLayout";
+import { useRequest } from "ahooks";
 import { PostCard } from "../Components/PostCard";
 
 /**
@@ -11,9 +12,16 @@ import { PostCard } from "../Components/PostCard";
  * @version 0.1.0
  */
 export default function HomePage() {
+  const { data } = useRequest(async () => {
+    const res = await fetch(`/api/Article`);
+    return await res.json() as number[];
+  }, {
+    cacheKey: `list`
+  });
+
   return (
     <ColLayout>
-      <PostCard />
+      {data?.map(x => <PostCard Id={x} />)}
     </ColLayout>
   )
 }
