@@ -1,4 +1,4 @@
-import { IPill } from "@/Components/Pill";
+import { prisma } from "..";
 
 /**
  * 
@@ -8,10 +8,16 @@ import { IPill } from "@/Components/Pill";
  * @version 0.1.0
  */
 export async function GET(request: Request) {
-  const res: IPill = {
-    Name: ".NET",
-    Count: 9
+  const cate = await prisma.category.findMany();
+  const res: Record<string, number> = {};
+
+  for (const { name } of cate) {
+    const num = await prisma.postCate.count({
+      where: { categoryName: name }
+    })
+
+    res.name = num;
   }
 
-  return new Response(JSON.stringify(Array(9).fill(res)));
+  return new Response(JSON.stringify(res));
 }

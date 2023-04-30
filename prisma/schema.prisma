@@ -32,13 +32,12 @@ model PostCate {
   post   Post @relation(fields: [postId], references: [id])
   postId Int
 
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
+  Category     Category @relation(fields: [categoryName], references: [name])
+  categoryName String
 }
 
 model Category {
-  id   Int    @id @default(autoincrement())
-  name String
+  name String @id
 
   categories PostCate[]
 }

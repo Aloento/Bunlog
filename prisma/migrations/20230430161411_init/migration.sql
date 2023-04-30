@@ -18,15 +18,14 @@ CREATE TABLE "Post" (
 CREATE TABLE "PostCate" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "postId" INTEGER NOT NULL,
-    "categoryId" INTEGER NOT NULL,
+    "categoryName" TEXT NOT NULL,
     CONSTRAINT "PostCate_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "PostCate_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "PostCate_categoryName_fkey" FOREIGN KEY ("categoryName") REFERENCES "Category" ("name") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "Category" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "name" TEXT NOT NULL
+    "name" TEXT NOT NULL PRIMARY KEY
 );
 
 -- CreateTable
