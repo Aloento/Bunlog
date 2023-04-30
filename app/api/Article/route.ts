@@ -59,9 +59,9 @@ export async function POST(request: Request) {
     const find = await prisma.category.count({ where: { name: c } });
 
     if (!find)
-      await prisma.category.create({ data: { name: c }, select: {} });
+      await prisma.category.create({ data: { name: c } });
 
-    await prisma.postCate.create({ data: { postId: id, categoryName: c }, select: {} });
+    await prisma.postCate.create({ data: { postId: id, categoryName: c } });
   }
 
   return new Response(null, {

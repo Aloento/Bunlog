@@ -48,8 +48,7 @@ export async function POST(request: Request, { params: { id } }: { params: { id:
       content: (await request.text()).trim().normalize(),
       postId: parseInt(id),
       userName: s!.user!.name!
-    },
-    select: {}
+    }
   })
 
   return new Response(null, {

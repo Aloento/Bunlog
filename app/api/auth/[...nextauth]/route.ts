@@ -11,7 +11,7 @@ import { prisma } from "../..";
  * @version 0.1.0
  */
 export const authOptions: AuthOptions = {
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [Credentials({
     credentials: {
       username: { label: "Username", type: "text", placeholder: "Aloento" },

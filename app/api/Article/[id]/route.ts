@@ -55,8 +55,7 @@ export async function PATCH(request: Request, { params: { id } }: { params: { id
       title: Title.trim().normalize(),
       content: JSON.stringify(Content),
       abstract: Abstract.trim().normalize(),
-    },
-    select: {}
+    }
   })
 
   await prisma.postCate.deleteMany({ where: { postId: Id } });
@@ -66,9 +65,9 @@ export async function PATCH(request: Request, { params: { id } }: { params: { id
     const find = await prisma.category.count({ where: { name: c } });
 
     if (!find)
-      await prisma.category.create({ data: { name: c }, select: {} });
+      await prisma.category.create({ data: { name: c } });
 
-    await prisma.postCate.create({ data: { postId: Id, categoryName: c }, select: {} });
+    await prisma.postCate.create({ data: { postId: Id, categoryName: c } });
   }
 }
 

@@ -42,8 +42,8 @@ export default function PostPage({ params: { id } }: { params: { id: string[] } 
   useUpdateEffect(() => {
     if (meta && abf) {
       setT(meta.Title);
-      setAb(abf)
-      setCate(meta.Categories)
+      setAb(abf);
+      setCate(meta.Categories);
     }
   }, [meta, abf]);
 
@@ -93,9 +93,9 @@ export default function PostPage({ params: { id } }: { params: { id: string[] } 
 
       <Field label="Categories" size="large">
         <Input
-          placeholder="Divide By Comma"
-          value={cate?.join(", ")}
-          onChange={(_, v) => setCate(v.value.toUpperCase().normalize().split(",").map(x => x.trim()).filter(x => x))}
+          placeholder="Divide By Slash"
+          value={cate?.join(" / ")}
+          onChange={(_, v) => setCate(v.value.toUpperCase().normalize().split("/").map(x => x.trim()).filter(x => x))}
         />
       </Field>
 

@@ -23,7 +23,7 @@ export async function GET(request: Request) {
         Count: num
       })
     else
-      await prisma.category.delete({ where: { name }, select: {} })
+      await prisma.category.delete({ where: { name } })
   }
 
   return new Response(JSON.stringify(res));
