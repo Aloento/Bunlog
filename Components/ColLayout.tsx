@@ -1,3 +1,5 @@
+"use client";
+
 import { Flex, MidStyle } from "@/Styles/Layout";
 import { tokens } from "@fluentui/react-components";
 import { CSSProperties } from "react";

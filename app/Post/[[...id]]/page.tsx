@@ -1,12 +1,14 @@
 "use client";
 
+import { IMetadata } from "@/Components/PostCard";
 import { Admin } from "@/Components/User";
 import { Lexical } from "@/Lexical";
 import { CurrentEditor } from "@/Lexical/Utils";
 import { BaseCard, Flex, MidStyle } from "@/Styles/Layout";
 import { IPost } from "@/app/api/Article/route";
 import { Button, Divider, Field, Input, Link, Textarea, tokens } from "@fluentui/react-components";
-import { useBoolean } from "ahooks";
+import { useBoolean, useRequest, useUpdateEffect } from "ahooks";
+import { SerializedEditorState } from "lexical";
 import { useState } from "react";
 
 /**
@@ -18,6 +20,39 @@ import { useState } from "react";
  */
 export default function PostPage({ params: { id } }: { params: { id: string[] } }) {
   const Id = id?.at(0);
+
+  const { data: meta } = useRequest(async () => {
+    if (!Id) return;
+    const res = await fetch(`/api/Article/${Id}`);
+    return await res.json() as IMetadata;
+  }, { cacheKey: `meta${Id}` });
+
+  const { data: abf } = useRequest(async () => {
+    if (!Id) return;
+    const res = await fetch(`/api/Article/${Id}/Abstract`);
+    return await res.text();
+  }, { cacheKey: `ab${Id}` });
+
+  const { data: ctx } = useRequest(async () => {
+    if (!Id) return;
+    const res = await fetch(`/api/Article/${Id}/Content`);
+    return await res.json() as SerializedEditorState;
+  }, { cacheKey: `ctx${Id}` })
+
+  useUpdateEffect(() => {
+    if (meta && abf) {
+      setT(meta.Title);
+      setAb(abf)
+      setCate(meta.Categories)
+    }
+  }, [meta, abf]);
+
+  useUpdateEffect(() => {
+    if (ctx && CurrentEditor) {
+      const state = CurrentEditor.parseEditorState(ctx);
+      CurrentEditor.setEditorState(state);
+    }
+  }, [ctx, CurrentEditor]);
 
   const [t, setT] = useState<string>();
   const [ab, setAb] = useState<string>();
@@ -81,7 +116,7 @@ export default function PostPage({ params: { id } }: { params: { id: string[] } 
 
             toggle();
 
-            await fetch(`/api/Article/${Id}`, {
+            await fetch(`/api/Article/${Id || ""}`, {
               method: Id ? "PATCH" : "POST",
               body: JSON.stringify({
                 Title: t,
