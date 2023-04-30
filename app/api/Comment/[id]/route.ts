@@ -1,3 +1,5 @@
+import { IComment } from "@/app/Article/[id]/Comment";
+
 /**
  * 
  *
@@ -8,4 +10,12 @@
 export async function GET(request: Request) {
   const id = new URL(request.url).pathname.split("/").reverse()[0];
 
+  const res: IComment = {
+    Name: "Aloento",
+    EMail: "Aloento@Q-Audio.org",
+    Posted: new Date(),
+    Content: "这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本"
+  };
+
+  return new Response(JSON.stringify(res));
 }

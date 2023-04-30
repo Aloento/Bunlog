@@ -21,15 +21,20 @@ export interface IComment {
  */
 export function Comment({ Id }: { Id: number }) {
   const { data } = useRequest(async () => {
-
+    const res = await fetch(`/api/Comment/${Id}`);
+    return await res.json() as IComment;
   }, { cacheKey: `cmt${Id}` });
+
+  const { Name, EMail, Posted, Content } = data || {
+    Name: "Loading..."
+  };
 
   return (
     <Card>
       <CardHeader
         image={
           <Avatar image={{
-            src: gravatarUrl("aloento@q-audio.org", { default: "retro" })
+            src: gravatarUrl(EMail || "@", { default: EMail ? "retro" : "404" })
           }} />
         }
         header={
@@ -38,12 +43,12 @@ export function Comment({ Id }: { Id: number }) {
             justifyContent: "space-between",
             alignItems: "center"
           }}>
-            <Body1Stronger>Elvia Atkin</Body1Stronger>
-            <Caption1 children={`Posted ${dayjs().subtract(1, "M").format("YYYY-MM-DD HH:mm")}`.toUpperCase()} />
+            <Body1Stronger>{Name}</Body1Stronger>
+            <Caption1 children={`POSTED ${dayjs(Posted).format("YYYY-MM-DD HH:mm")}`} />
           </div>
         } />
 
-      <Body1 children="这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本这是一串非常长的文本" />
+      <Body1>{Content}</Body1>
     </Card>
   );
 }
