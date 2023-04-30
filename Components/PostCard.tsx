@@ -54,7 +54,7 @@ export function PostCard({ Id }: { Id: number }) {
             color: tokens.colorNeutralForeground3,
             justifyContent: "space-between"
           }}>
-            <Caption1 children={`POSTED ${dayjs(Posted).fromNow()}`} />
+            <Caption1 children={`POSTED ${dayjs(Posted).fromNow().toUpperCase()}`} />
 
             <Caption1>
               {Categories.join(" / ")}
