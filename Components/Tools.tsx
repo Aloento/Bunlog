@@ -3,6 +3,7 @@ import { Flex } from "@/Styles/Layout";
 import { Body1, Button, Card, CardHeader } from "@fluentui/react-components";
 import { DeleteRegular, DocumentJavascriptRegular, DocumentPdfRegular, EditRegular } from "@fluentui/react-icons";
 import { exportFile } from "@lexical/file";
+import { Admin } from "./User";
 
 export function Tools() {
   return (
@@ -14,8 +15,11 @@ export function Tools() {
         ...Flex,
         justifyContent: "space-around"
       }}>
-        <Button icon={<EditRegular />} appearance="subtle" />
-        <Button icon={<DeleteRegular />} appearance="subtle" />
+        <Admin>
+          <Button icon={<EditRegular />} appearance="subtle" />
+          <Button icon={<DeleteRegular />} appearance="subtle" />
+        </Admin>
+
         <Button icon={<DocumentPdfRegular />} appearance="subtle" />
         <Button icon={<DocumentJavascriptRegular />} appearance="subtle" onClick={() => {
           exportFile(CurrentEditor!, {

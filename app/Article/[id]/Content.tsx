@@ -1,4 +1,5 @@
 "use client";
+import { IAbstract } from "@/Components/PostCard";
 import { Lexical } from "@/Lexical";
 import { LexDisplayPreset } from "@/Lexical/Context/Display";
 import { CurrentEditor } from "@/Lexical/Utils";
@@ -6,14 +7,8 @@ import { Flex } from "@/Styles/Layout";
 import { Caption1, Card, CardHeader, Divider, Title3, tokens } from "@fluentui/react-components";
 import { useRequest, useUpdateEffect } from "ahooks";
 import dayjs from "dayjs";
+import { SerializedEditorState } from "lexical";
 import { Helmet } from "react-helmet";
-
-export interface IArticle {
-  Title: string;
-  Posted: Date;
-  Categories: string[];
-  Content: any;
-}
 
 /**
  * 
@@ -23,24 +18,31 @@ export interface IArticle {
  * @version 0.1.0
  */
 export function ArticleContent({ Id }: { Id: number }) {
-  const { data } = useRequest(async () => {
+  const { data: meta } = useRequest(async () => {
     const res = await fetch(`/api/Article/${Id}`);
-    return await res.json() as IArticle;
+    return await res.json() as IAbstract;
   }, {
-    cacheKey: `post${Id}`
+    cacheKey: `meta${Id}`
   });
 
-  const { Title, Posted, Categories, Content } = data || {
+  const { Title, Posted, Categories } = meta || {
     Title: "Loading...",
     Categories: [],
   };
 
+  const { data: ctx } = useRequest(async () => {
+    const res = await fetch(`/api/Article/${Id}/Content`);
+    return await res.json() as SerializedEditorState;
+  }, {
+    cacheKey: `ctx${Id}`
+  })
+
   useUpdateEffect(() => {
-    if (data && CurrentEditor) {
-      const state = CurrentEditor.parseEditorState(Content);
+    if (ctx && CurrentEditor) {
+      const state = CurrentEditor.parseEditorState(ctx);
       CurrentEditor.setEditorState(state);
     }
-  }, [data, CurrentEditor]);
+  }, [ctx, CurrentEditor]);
 
   return (
     <Card style={{

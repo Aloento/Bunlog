@@ -2,6 +2,12 @@ import { Flex } from "@/Styles/Layout";
 import { Body1, Caption1, Card, CardHeader, Link, Title3, tokens } from "@fluentui/react-components";
 import dayjs from "dayjs";
 
+export interface IAbstract {
+  Title: string;
+  Posted: Date;
+  Categories: string[];
+}
+
 /**
  * 
  *
