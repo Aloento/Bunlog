@@ -17,6 +17,7 @@
     "@types/node": "^18.16.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@types/react-helmet": "^6.1.6",
     "ahooks": "^3.7.6",
     "dayjs": "^1.11.7",
     "gravatar-url": "^4.0.1",

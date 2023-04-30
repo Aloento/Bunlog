@@ -114,7 +114,7 @@ export function LexEditor(): JSX.Element {
 
         <RichTextPlugin
           contentEditable={<LexContentEditable />}
-          placeholder={placeholder}
+          placeholder={(!Display && placeholder) as any}
           ErrorBoundary={LexicalErrorBoundary}
         />
 

@@ -6,6 +6,7 @@ import { Flex } from "@/Styles/Layout";
 import { Caption1, Card, CardHeader, Divider, Title3, tokens } from "@fluentui/react-components";
 import { useRequest, useUpdateEffect } from "ahooks";
 import dayjs from "dayjs";
+import { Helmet } from "react-helmet";
 
 export interface IArticle {
   Title: string;
@@ -39,7 +40,7 @@ export function ArticleContent({ Id }: { Id: number }) {
 
   useUpdateEffect(() => {
     if (data && CurrentEditor) {
-      const state = CurrentEditor.parseEditorState(JSON.stringify(Content.editorState));
+      const state = CurrentEditor.parseEditorState(Content);
       CurrentEditor.setEditorState(state);
     }
   }, [data, CurrentEditor]);
@@ -48,6 +49,10 @@ export function ArticleContent({ Id }: { Id: number }) {
     <Card style={{
       padding: [tokens.spacingHorizontalM, tokens.spacingHorizontalXL, tokens.spacingHorizontalXXL].join(" "),
     }}>
+      <Helmet>
+        <title>{Title} - Aloento's Blog</title>
+      </Helmet>
+
       <CardHeader
         style={{ rowGap: tokens.spacingVerticalS }}
         header={<Title3>{Title}</Title3>}
