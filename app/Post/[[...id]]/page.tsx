@@ -40,11 +40,13 @@ export default function PostPage({ params: { id } }: { params: { id: string[] } 
   }, { cacheKey: `ctx${Id}` })
 
   useUpdateEffect(() => {
-    if (meta && abf) {
+    if (meta) {
       setT(meta.Title);
-      setAb(abf);
       setCate(meta.Categories);
     }
+
+    if (abf)
+      setAb(abf);
   }, [meta, abf]);
 
   useUpdateEffect(() => {
