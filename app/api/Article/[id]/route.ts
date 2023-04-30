@@ -43,7 +43,7 @@ export async function GET(request: Request, { params: { id } }: { params: { id: 
  */
 export async function PATCH(request: Request, { params: { id } }: { params: { id: string } }) {
   const s = await getServerSession();
-  if (s!.user!.name !== "Aloento")
+  if (s?.user?.name !== "Aloento")
     throw "Not Admin";
 
   const Id = parseInt(id);
@@ -81,8 +81,7 @@ export async function PATCH(request: Request, { params: { id } }: { params: { id
  */
 export async function DELETE(request: Request, { params: { id } }: { params: { id: string } }) {
   const s = await getServerSession();
-
-  if (s!.user!.name === "Aloento")
+  if (s?.user?.name === "Aloento")
     await prisma.post.delete({
       where: { id: parseInt(id) },
       select: {}

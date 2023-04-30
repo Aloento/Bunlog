@@ -38,7 +38,7 @@ export interface IPost {
  */
 export async function POST(request: Request) {
   const s = await getServerSession();
-  if (s!.user!.name !== "Aloento")
+  if (s?.user?.name !== "Aloento")
     throw "Not Admin";
 
   const { Title, Content, Abstract, Categories } = await request.json() as IPost;
