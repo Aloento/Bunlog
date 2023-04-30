@@ -3,8 +3,10 @@
 import { Flex } from "@/Styles/Layout";
 import { Avatar, Button, Card, CardHeader, Field, Input, tokens } from "@fluentui/react-components";
 import { SendRegular } from "@fluentui/react-icons";
+import { useBoolean } from "ahooks";
 import gravatarUrl from "gravatar-url";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 
 /**
  * 
@@ -13,9 +15,12 @@ import { useSession } from "next-auth/react";
  * @since 0.1.0
  * @version 0.1.0
  */
-export function PostComment() {
+export function PostComment({ Id }: { Id: number }) {
   const { data } = useSession();
   const email = data?.user?.email;
+
+  const [cmt, setCmt] = useState<string>();
+  const [up, { toggle }] = useBoolean();
 
   return (
     <Card>
@@ -27,10 +32,30 @@ export function PostComment() {
             columnGap: tokens.spacingHorizontalM
           }}>
             <Field style={{ flexGrow: 1 }}>
-              <Input appearance="underline" placeholder={email ? "Post Comment Here" : "Login to Post New Comment"} disabled={!email} />
+              <Input
+                appearance="underline"
+                placeholder={email ? "Post Comment Here" : "Login to Post New Comment"}
+                disabled={!email}
+                value={cmt}
+                onChange={(_, v) => setCmt(v.value)}
+              />
             </Field>
 
-            <Button icon={<SendRegular />} disabled={!email} />
+            <Button icon={<SendRegular />} disabled={up || !email} onClick={async () => {
+              const s = cmt?.trim();
+              if ((s?.length || 0) < 2)
+                return;
+
+              toggle();
+
+              const res = await fetch(`/api/Comment/${Id}`, {
+                method: "POST",
+                body: cmt
+              })
+
+              if (res.status === 201)
+                location.reload();
+            }} />
           </div>
         }
       />

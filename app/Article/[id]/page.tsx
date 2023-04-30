@@ -31,7 +31,7 @@ export default function ArtiPage({ params: { id } }: { params: { id: string } })
 
       <Divider />
 
-      <PostComment />
+      <PostComment Id={Id} />
 
       <Divider />
 
