@@ -19,9 +19,9 @@ export async function POST(request: Request) {
 
   await prisma.user.create({
     data: {
-      name: Name,
-      email: EMail,
-      hash: createHash("sha256").update(Hash).digest("base64")
+      name: Name.trim().normalize(),
+      email: EMail.trim().normalize().toUpperCase(),
+      hash: createHash("sha256").update(Hash.trim().normalize()).digest("base64")
     }
   })
 

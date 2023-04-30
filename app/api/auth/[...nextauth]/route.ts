@@ -1,5 +1,7 @@
+import { createHash } from "crypto";
 import NextAuth, { AuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import { prisma } from "../..";
 
 /**
  * 
@@ -15,11 +17,18 @@ export const authOptions: AuthOptions = {
       password: { label: "Password", type: "password", placeholder: "Aloento" }
     },
     async authorize(credentials, req) {
+      const { name, email } = await prisma.user.findFirstOrThrow({
+        where: {
+          name: credentials!.username,
+          hash: createHash("sha256").update(credentials!.password).digest("base64")
+        }
+      })
+
       return {
-        id: "Aloento",
-        name: "Aloento",
-        email: "Me@Aloen.to",
-        image: "Admin"
+        id: name,
+        name,
+        email,
+        image: name === "Aloento" ? "Admin" : null
       };
     }
   })]
