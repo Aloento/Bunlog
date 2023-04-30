@@ -42,7 +42,7 @@ export default function PostPage({ params: { id } }: { params: { id: string[] } 
             columnGap: tokens.spacingHorizontalMNudge
           }}
           value={t}
-          onChange={(_, v) => setT(v.value.normalize())}
+          onChange={(_, v) => setT(v.value.trim().normalize())}
         />
       </Field>
 
@@ -53,7 +53,7 @@ export default function PostPage({ params: { id } }: { params: { id: string[] } 
       <Divider />
 
       <Field label="Abstract" size="large">
-        <Textarea resize="vertical" placeholder="Article Abstract Here" value={ab} onChange={(_, v) => setAb(v.value.normalize())} />
+        <Textarea resize="vertical" placeholder="Article Abstract Here" value={ab} onChange={(_, v) => setAb(v.value.trim().normalize())} />
       </Field>
 
       <Field label="Categories" size="large">
