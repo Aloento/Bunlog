@@ -1,4 +1,5 @@
 import { SerializedEditorState } from "lexical";
+import { getServerSession } from "next-auth";
 import { prisma } from "..";
 
 /**
@@ -36,6 +37,10 @@ export interface IPost {
  * @version 0.1.0
  */
 export async function POST(request: Request) {
+  const s = await getServerSession();
+  if (s!.user!.name !== "Aloento")
+    throw "Not Admin";
+
   const { Title, Content, Abstract, Categories } = await request.json() as IPost;
 
   const { id } = await prisma.post.create({

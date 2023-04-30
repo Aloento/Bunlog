@@ -17,10 +17,13 @@ export async function GET(request: Request) {
       where: { categoryName: name }
     })
 
-    res.push({
-      Name: name,
-      Count: num
-    })
+    if (num)
+      res.push({
+        Name: name,
+        Count: num
+      })
+    else
+      await prisma.category.delete({ where: { name }, select: {} })
   }
 
   return new Response(JSON.stringify(res));
