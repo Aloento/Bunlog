@@ -47,14 +47,15 @@ export async function POST(request: Request) {
     data: {
       title: Title.trim().normalize(),
       content: JSON.stringify(Content),
-      abstract: Abstract,
+      abstract: Abstract.trim().normalize(),
     },
     select: {
       id: true
     }
   })
 
-  for (const c of Categories) {
+  for (let c of Categories) {
+    c = c.trim().normalize().toUpperCase();
     const find = await prisma.category.count({ where: { name: c } });
 
     if (!find)

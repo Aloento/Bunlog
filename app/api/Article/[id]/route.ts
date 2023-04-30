@@ -11,10 +11,24 @@ import { IPost } from "../route";
  * @version 0.1.0
  */
 export async function GET(request: Request, { params: { id } }: { params: { id: string } }) {
+  const { id: Id, title, posted } = await prisma.post.findFirstOrThrow({
+    where: { id: parseInt(id) },
+    select: {
+      id: true,
+      title: true,
+      posted: true
+    }
+  })
+
+  const cate = await prisma.postCate.findMany({
+    where: { postId: Id },
+    select: { categoryName: true }
+  });
+
   const post: IMetadata = {
-    Title: "Video processing with WebCodecs",
-    Posted: new Date(),
-    Categories: ["PROGRAM", "FRONTEND", "WEBCODECS"],
+    Title: title,
+    Posted: posted,
+    Categories: cate.map(x => x.categoryName!).filter(x => x),
   }
 
   return new Response(JSON.stringify(post));
@@ -40,14 +54,15 @@ export async function PATCH(request: Request, { params: { id } }: { params: { id
     data: {
       title: Title.trim().normalize(),
       content: JSON.stringify(Content),
-      abstract: Abstract,
+      abstract: Abstract.trim().normalize(),
     },
     select: {}
   })
 
   await prisma.postCate.deleteMany({ where: { postId: Id } });
 
-  for (const c of Categories) {
+  for (let c of Categories) {
+    c = c.trim().normalize().toUpperCase();
     const find = await prisma.category.count({ where: { name: c } });
 
     if (!find)
