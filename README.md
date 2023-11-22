@@ -15,4 +15,6 @@ A Simple Personal Blog & Frontend Framework Course Sample Work
 
 - Run `pnpm install`
 
+- Run `npx prisma generate`
+
 - Run `pnpm run dev`
