@@ -9,8 +9,6 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 /**
- * 
- *
  * @author Aloento
  * @since 0.1.0
  * @version 0.1.0
@@ -29,6 +27,7 @@ export function PostComment({ Id }: { Id: number }) {
         header={
           <div style={{
             ...Flex,
+            flexGrow: 1,
             columnGap: tokens.spacingHorizontalM
           }}>
             <Field style={{ flexGrow: 1 }}>

@@ -13,8 +13,6 @@ export interface IComment {
 }
 
 /**
- * 
- *
  * @author Aloento
  * @since 0.1.0
  * @version 0.1.0
@@ -40,8 +38,10 @@ export function Comment({ Id }: { Id: number }) {
         header={
           <div style={{
             ...Flex,
+            height: "32px",
+            flexGrow: 1,
+            alignItems: "center",
             justifyContent: "space-between",
-            alignItems: "center"
           }}>
             <Body1Stronger>{Name}</Body1Stronger>
             <Caption1 children={`POSTED ${dayjs(Posted).format("YYYY-MM-DD HH:mm")}`} />
