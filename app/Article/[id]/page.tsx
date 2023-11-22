@@ -35,7 +35,7 @@ export default function ArtiPage({ params: { id } }: { params: { id: string } })
 
       <Divider />
 
-      {data?.map(x => <Comment Id={x} />)}
+      {data?.map((x, i) => <Comment key={i} Id={x} />)}
     </ColLayout>
   )
 }

@@ -298,8 +298,8 @@ export function ToolbarPlugin(): JSX.Element {
 
           <MenuPopover>
             <MenuList>
-              {CODE_LANGUAGE_OPTIONS.map(([value, name]) =>
-                <MenuItem onClick={() => onCodeLanguageSelect(value)} children={name} />)}
+              {CODE_LANGUAGE_OPTIONS.map(([value, name], i) =>
+                <MenuItem key={i} onClick={() => onCodeLanguageSelect(value)} children={name} />)}
             </MenuList>
           </MenuPopover>
         </Menu>

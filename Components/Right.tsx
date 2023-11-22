@@ -26,7 +26,7 @@ export function CommRight() {
       <Card size="large" style={{ rowGap: tokens.spacingVerticalXXL }}>
         <CardHeader header={<Body1>RECENTS</Body1>} />
 
-        {data?.map(x => <Recent Id={x} />)}
+        {data?.map((x, i) => <Recent key={i} Id={x} />)}
 
       </Card>
     </div>

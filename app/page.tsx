@@ -21,7 +21,7 @@ export default function HomePage() {
 
   return (
     <ColLayout>
-      {data?.map(x => <PostCard Id={x} />)}
+      {data?.map((x, i) => <PostCard key={i} Id={x} />)}
     </ColLayout>
   )
 }

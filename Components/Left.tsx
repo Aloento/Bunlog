@@ -31,7 +31,7 @@ export function CommLeft() {
           flexWrap: "wrap",
           gap: tokens.spacingHorizontalS
         }}>
-          {data?.map(x => <Pill {...x} />)}
+          {data?.map((x, i) => <Pill key={i} {...x} />)}
         </div>
       </Card>
     </div>
