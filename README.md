@@ -2,6 +2,8 @@
 
 A Simple Personal Blog & Frontend Framework Course Sample Work
 
+It has the same design as https://Aloen.to/
+
 ## Requirements
 
 - NodeJS
