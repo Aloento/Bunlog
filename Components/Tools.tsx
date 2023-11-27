@@ -4,12 +4,11 @@ import { Body1, Button, Card, CardHeader, Link } from "@fluentui/react-component
 import { DeleteRegular, DocumentJavascriptRegular, DocumentPdfRegular, EditRegular } from "@fluentui/react-icons";
 import { exportFile } from "@lexical/file";
 import { useRouter } from "next/navigation";
-import Router from "next/router";
 import { Admin } from "./User";
 
 export function Tools() {
   const { push } = useRouter();
-  const id = process.browser ? Router.pathname.split("/").reverse()[0] : "";
+  const id = process.browser ? location.pathname.split("/").reverse()[0] : "";
 
   return (
     CurrentEditor &&
