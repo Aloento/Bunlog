@@ -6,7 +6,7 @@ import ws from "ws";
 
 dotenv.config();
 neonConfig.webSocketConstructor = ws;
-const connectionString = `${process.env.DATABASE_URL}`;
+const connectionString = `${process.env.POSTGRES_PRISMA_URL}`;
 
 const pool = new Pool({ connectionString });
 const adapter = new PrismaNeon(pool);

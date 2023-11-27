@@ -41,6 +41,9 @@ dependencies:
   ahooks:
     specifier: ^3.7.8
     version: 3.7.8(react@18.2.0)
+  bufferutil:
+    specifier: ^4.0.8
+    version: 4.0.8
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
@@ -79,7 +82,7 @@ dependencies:
     version: 5.3.2
   ws:
     specifier: ^8.14.2
-    version: 8.14.2
+    version: 8.14.2(bufferutil@4.0.8)
 
 devDependencies:
   '@types/ws':
@@ -1965,6 +1968,14 @@ packages:
     resolution: {integrity: sha512-DRQrD6gJyy8FbiE4s+bDoXS9hiW3Vbx5uCdwvcCf3zLHL+Iv7LtGHLpr+GZV8rHG8tK766FGYBwRbu8pELTt+w==}
     dev: false
 
+  /bufferutil@4.0.8:
+    resolution: {integrity: sha512-4T53u4PdgsXqKaIctwF8ifXlRTTmEPJ8iEPWFdGZvcf7sbwYo6FKFEX9eNNAnzFZ7EzJAQ3CJeOtCRA4rDp7Pw==}
+    engines: {node: '>=6.14.2'}
+    requiresBuild: true
+    dependencies:
+      node-gyp-build: 4.7.1
+    dev: false
+
   /busboy@1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
     engines: {node: '>=10.16.0'}
@@ -2179,6 +2190,11 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+    dev: false
+
+  /node-gyp-build@4.7.1:
+    resolution: {integrity: sha512-wTSrZ+8lsRRa3I3H8Xr65dLWSgCvY2l4AOnaeKdPA9TB/WYMPaTcrzf3rXvFoVvjKNVnu0CcWSx54qq9GKRUYg==}
+    hasBin: true
     dev: false
 
   /oauth@0.9.15:
@@ -2531,7 +2547,7 @@ packages:
       graceful-fs: 4.2.11
     dev: false
 
-  /ws@8.14.2:
+  /ws@8.14.2(bufferutil@4.0.8):
     resolution: {integrity: sha512-wEBG1ftX4jcglPxgFCMJmZ2PLtSbJ2Peg6TmpJFTbe9GZYOQCDPdMYu/Tm0/bGZkw8paZnJY45J4K2PZrLYq8g==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -2542,6 +2558,8 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+    dependencies:
+      bufferutil: 4.0.8
     dev: false
 
   /xtend@4.0.2:
