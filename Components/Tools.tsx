@@ -8,7 +8,7 @@ import { Admin } from "./User";
 
 export function Tools() {
   const { push } = useRouter();
-  const id = process.browser ? location.pathname.split("/").reverse()[0] : "";
+  const id = typeof document !== "undefined" ? location.pathname.split("/").reverse()[0] : "";
 
   return (
     CurrentEditor &&
