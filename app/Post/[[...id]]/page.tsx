@@ -9,6 +9,7 @@ import { IPost } from "@/app/api/Article/route";
 import { Button, Divider, Field, Input, Link, Textarea, tokens } from "@fluentui/react-components";
 import { useBoolean, useRequest, useUpdateEffect } from "ahooks";
 import { SerializedEditorState } from "lexical";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 /**
@@ -61,6 +62,7 @@ export default function PostPage({ params: { id } }: { params: { id: string[] } 
   const [cate, setCate] = useState<string[]>();
 
   const [up, { toggle }] = useBoolean();
+  const { push } = useRouter();
 
   return (
     <div style={{
@@ -128,7 +130,7 @@ export default function PostPage({ params: { id } }: { params: { id: string[] } 
               } as IPost)
             })
 
-            location.href = "/";
+            push("/");
           }}>
             Submit
           </Button>

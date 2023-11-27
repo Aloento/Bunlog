@@ -6,6 +6,7 @@ import { SendRegular } from "@fluentui/react-icons";
 import { useBoolean } from "ahooks";
 import gravatarUrl from "gravatar-url";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 /**
@@ -15,6 +16,7 @@ import { useState } from "react";
  */
 export function PostComment({ Id }: { Id: number }) {
   const { data } = useSession();
+  const { refresh } = useRouter();
   const email = data?.user?.email;
 
   const [cmt, setCmt] = useState<string>();
@@ -53,7 +55,7 @@ export function PostComment({ Id }: { Id: number }) {
               })
 
               if (res.status === 201)
-                location.reload();
+                refresh();
             }} />
           </div>
         }
