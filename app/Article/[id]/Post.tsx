@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { Flex } from "@/Styles/Layout";
 import { Avatar, Button, Card, CardHeader, Field, Input, tokens } from "@fluentui/react-components";

@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import { Flex } from "@/Styles/Layout";
 import { Avatar, Body1, Body1Stronger, Caption1, Card, CardHeader } from "@fluentui/react-components";
 import { useRequest } from "ahooks";

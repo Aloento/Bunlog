@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { ColLayout } from "@/Components/ColLayout";
 import { useRequest } from "ahooks";

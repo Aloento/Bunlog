@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { ColLayout } from "@/Components/ColLayout";
 import { Divider } from "@fluentui/react-components";

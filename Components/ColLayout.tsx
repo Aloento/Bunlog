@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { Flex, MidStyle } from "@/Styles/Layout";
 import { tokens } from "@fluentui/react-components";

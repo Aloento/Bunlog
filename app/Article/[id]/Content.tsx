@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import { IMetadata } from "@/Components/PostCard";
 import { Lexical } from "@/Lexical";
 import { LexDisplayPreset } from "@/Lexical/Context/Display";

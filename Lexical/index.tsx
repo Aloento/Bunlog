@@ -1,3 +1,5 @@
+'use client'
+
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { LexDisplayPreset } from "./Context/Display";
 import { LexRichTextPreset } from "./Context/RichText";

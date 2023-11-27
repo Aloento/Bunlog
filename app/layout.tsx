@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { Footer } from "@/Components/Footer";
 import { NavH, NavW, TopNavBar } from "@/Components/TopNavBar";
